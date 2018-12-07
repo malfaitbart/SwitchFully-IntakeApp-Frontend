@@ -5,10 +5,12 @@ import {CoreModule} from './core/core.module'
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { FeaturesModule } from './features/features.module';
+import { HeaderComponent } from './features/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,9 @@
 <section class= 'homepage' ><img src= '../assets/images/switchfully_logo.png'>
-<app-header></app-header>
 
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
-    </div>
-</nav>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <app-header></app-header>
+    </nav>
 
-<!-- main app container -->
-<div class="jumbotron">
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -17,6 +11,6 @@
             </div>
         </div>
     </div>
-</div>
+
 
 </section>

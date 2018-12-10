@@ -24,6 +24,6 @@ export class CampaignService {
   }
   
   getSingleCampaign(id: string): Observable<Campaign> {
-   return this.http.get<Campaign>(`${ApiUrl.urlCampaign}/${id}`);
+   return this.http.get<Campaign>(`${ApiUrl.urlCampaign}id:string?id=${id}`);
   }
 }

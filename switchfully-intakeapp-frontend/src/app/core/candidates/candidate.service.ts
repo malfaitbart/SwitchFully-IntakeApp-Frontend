@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ApplicationInitStatus } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Candidate } from './candidate';
 import { Observable } from 'rxjs';
@@ -21,6 +21,17 @@ export class CandidateService {
   getCandidates(): Observable<Candidate[]> {
     return this.http.get<Candidate[]>(ApiUrl.urlCandidates);
   }
+
+  getById(id: string): Observable<Candidate> {
+    // const url = `${ApiUrl.urlCandidates}/${id}`;
+    const url = `http://localhost:59089/api/Candidates/${id}`;
+
+        return this.http.get<Candidate>(url)
+      .pipe(
+        tap(h => { console.log(`fetched customerid = ${id}`) }),
+      );
+  }
+
 
   createCandidate(candidate: Candidate): Observable<Candidate> {
     return this.http.post<Candidate>(ApiUrl.urlCandidates, candidate, httpOptions).pipe(

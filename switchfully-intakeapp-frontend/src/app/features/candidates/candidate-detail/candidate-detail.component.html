@@ -1,0 +1,27 @@
+<h1>Candidate Detail</h1>
+
+<div class="table-responsive" *ngIf="(candidate$ | async) as candidate else loading">
+  <table id="mytable" class="table table-bordred table-striped">
+    <tr>
+      <th>Id: </th>
+      <td>{{candidate.id}}</td>
+    </tr>
+    <tr>
+      <th>FirstName: </th>
+      <td>{{candidate.firstName}}</td>
+    </tr>
+    <tr>
+      <th>LastName: </th>
+      <td>{{candidate.lastName}}</td>
+    </tr>
+    <tr>
+      <th>Email:</th>
+      <td>{{candidate.email}}</td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #loading>
+  Loading...
+</ng-template>
+<button (click)="goBack()">go back</button>

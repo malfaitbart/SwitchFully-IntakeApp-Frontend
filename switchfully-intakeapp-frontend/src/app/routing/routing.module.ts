@@ -6,6 +6,7 @@ import { LoginComponent } from '../features/login/login.component';
 import { AuthGuard } from '../core/authentication/guard/auth.guard';
 import { CandidateOverviewComponent } from '../features/candidates/candidate-overview/candidate-overview.component';
 import { CandidateNewComponent } from '../features/candidates/candidate-new/candidate-new.component';
+import { CandidateDetailComponent } from '../features/candidates/candidate-detail/candidate-detail.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: 'campaigns', component: CampaignsComponent },
   { path: 'candidates', component: CandidateOverviewComponent },
-  { path: 'candidates/new', component: CandidateNewComponent }
+  { path: 'candidates/new', component: CandidateNewComponent },
+  { path: 'candidates/:id', component: CandidateDetailComponent }
 ]
 
 @NgModule({

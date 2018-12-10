@@ -14,7 +14,7 @@ import { first } from 'rxjs/operators';
 export class HeaderComponent implements OnInit {
 
     currentUserToken: UserAuth;
-    currentUser: LoggedOnUser;
+    currentUser: LoggedOnUser = new LoggedOnUser();
     constructor(private router: Router,private authenticationService: AuthService,private userService: UserService) {
         this.authenticationService.currentUserToken.subscribe(x => this.currentUserToken = x);
     }
@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['/login']);
     }
     CurrentUserName(){
-        if(this.currentUserToken && !this.currentUser){
+        if(this.currentUserToken && !this.currentUser.firstName){
             this.userService.getcurrent().pipe(first()).subscribe(user => {
                 this.currentUser = user; });
         }

@@ -4,9 +4,11 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RoutingModule } from '../routing/routing.module';
 import { HeaderComponent } from './header/header.component';
 
-import { CampaignsComponent } from './campaigns/campaigns.component';
+import { CampaignsComponent } from './campaigns/campaigns-overview/campaigns.component';
 
 import { LoginComponent } from './login/login.component';
+import { CampaignDetailComponent } from './campaigns/campaign-detail/campaign-detail.component';
+import { CampaignNewComponent } from './campaigns/campaign-new/campaign-new.component';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 HomepageComponent,
 LoginComponent,
 CampaignsComponent,
+CampaignDetailComponent,
+CampaignNewComponent,
 
   ],
   imports: [

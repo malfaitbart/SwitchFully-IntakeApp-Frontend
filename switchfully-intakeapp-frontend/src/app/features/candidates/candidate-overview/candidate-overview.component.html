@@ -1,18 +1,20 @@
-<h1>Campaigns</h1>
-
+<h1>Candidates</h1>
+<button class="" routerLink="/candidates/new">New Candidate</button>
 <div class="table-responsive">
   <table id="mytable" class="table table-bordred table-striped">
-     <thead>
-       <th>ID</th>
-       <th>FirstName</th>
-       <th>LastName</th>
-       <th>Email</th>
-     </thead>
-     <tr *ngFor= "let candidate of candidates | async" >
-       <td>{{candidate.id}}</td>
-       <td>{{candidate.firstName}}</td>
-       <td>{{candidate.lastName}}</td>
-       <td>{{candidate.email}}</td>
-     </tr>
- </table>
- </div>
+    <thead>
+      <th>ID</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Email</th>
+      <td>Actions</td>
+    </thead>
+    <tr *ngFor="let candidate of candidates">
+      <td>{{candidate.id}}</td>
+      <td>{{candidate.firstName}}</td>
+      <td>{{candidate.lastName}}</td>
+      <td>{{candidate.email}}</td>
+      <td><a routerLink="/candidates/{{candidate.id}}">Detail</a></td>
+    </tr>
+  </table>
+</div>

@@ -16,6 +16,7 @@ export class CandidateOverviewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getAllCandidates();
   }
 
   getAllCandidates(){

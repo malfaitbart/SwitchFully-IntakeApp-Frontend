@@ -9,6 +9,11 @@ body {
   #main-content {
     padding-top: 3rem;
   }
+
+  h2{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+  }
   
   #page-footer {
     color: white;

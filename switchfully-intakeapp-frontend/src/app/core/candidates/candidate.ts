@@ -1,6 +1,6 @@
-export class Candidate{
-  id: string;
+export class Candidate {
+  id?: string;
   firstName: string;
-  LastName: string;
+  lastName: string;
   email: string;
 }

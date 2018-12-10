@@ -1,6 +1,3 @@
-export class UserAuth {
-    email: string;
-    password: string;
+export class UserAuth {   
     token?: string;
-    username: string;
 }

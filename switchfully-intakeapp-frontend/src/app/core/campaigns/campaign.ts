@@ -1,5 +1,5 @@
 export class Campaign{
-    id: string;
+    campaignId: string;
     name: string;
     client: string;
     startDate: Date;

@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['/login']);
     }
     CurrentUserName(){
-        if(this.currentUserToken && !this.currentUser){
+        if(this.currentUserToken && !this.currentUser.firstName){
             this.userService.getcurrent().pipe(first()).subscribe(user => {
                 this.currentUser = user; });
         }

@@ -1,0 +1,32 @@
+<h1>Campaigns</h1>
+<button routerLink="/campaignnew">New Campaign</button>
+<div class="table-responsive  col-12">
+  <table id="mytable" class="table table-bordred table-striped">
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Client</th>
+      <th>StartDate</th>
+      <th>EndDate</th>
+      <th>Status</th>
+      <th>Details</th>
+    </thead>
+    <tr *ngFor="let campaign of campaigns$ | async ">
+        <td>{{campaign.campaignId}}</td>
+        <td>{{campaign.name}}</td>
+        <td>{{campaign.client}}</td>
+        <td>{{campaign.startDate}}</td>
+        <td>{{campaign.endDate}}</td>
+
+        <ng-template *ngIf="campaign.status else True">
+          <td>Not Active</td>
+        </ng-template>
+        <ng-template #True>
+          <td>Active</td>
+        </ng-template>
+        <td><button routerLink="/campaigndetail/{{campaign.campaignId}}">Details</button></td>
+
+    </tr>
+
+  </table>
+</div>

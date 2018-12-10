@@ -1,12 +1,12 @@
 
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark box-header-border box-header-shadow " *ngIf="currentUser">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark box-header-border box-header-shadow " *ngIf="currentUserToken">
             <div class="container">
                 <div class="col-9">
                     <button class="nav-item nav-link" routerLink="/">Home</button>                              
                 </div>
                 
                 <div class="col-3 text-right"> 
-                    <p>currntly logged on as <strong>{{currentUser.Token}}</strong> </p>
+                    <p>currntly logged on as <strong>{{currentUserToken.Token}}</strong> </p>
                     <a class="nav-item nav-link" (click)="logout()">Logout</a>
                 </div>
                 

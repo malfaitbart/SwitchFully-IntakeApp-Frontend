@@ -10,13 +10,13 @@ import { AuthService } from 'src/app/core/authentication/service/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  currentUser: UserAuth;
+  currentUserToken: UserAuth;
 
   constructor(
       private router: Router,
       private authenticationService: AuthService
   ) {
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+      this.authenticationService.currentUserToken.subscribe(x => this.currentUserToken = x);
   }
 
   logout() {

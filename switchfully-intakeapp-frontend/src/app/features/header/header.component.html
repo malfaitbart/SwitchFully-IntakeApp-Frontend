@@ -1,17 +1,14 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark box-header-border box-header-shadow " *ngIf="currentUserToken">
+  <div class="container">
+    <div class="col-9">
+      <button class="nav-item nav-link" routerLink="/">Home</button>
+      <button class="nav-item nav-link" routerLink="/candidates">Candidates</button>
+    </div>
 
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark box-header-border box-header-shadow " *ngIf="currentUserToken">
-            <div class="container">
-                <div class="col-9">
-                    <button class="nav-item nav-link" routerLink="/">Home</button>                              
-                </div>
-                
-                <div class="col-3 text-right"> 
-                    <p>currntly logged on as <strong>{{currentUser.firstName}} {{currentUser.lastName}} </strong> </p> 
-                    <button class="nav-item nav-link" (click)="logout()">Logout</button>
-                </div>
-                
-            </div>
-            </nav>
-            
+    <div class="col-3 text-right">
+      <p>currntly logged on as <strong>{{currentUser.firstName}} {{currentUser.lastName}} </strong> </p>
+      <button class="nav-item nav-link" (click)="logout()">Logout</button>
+    </div>
 
-
+  </div>
+</nav>

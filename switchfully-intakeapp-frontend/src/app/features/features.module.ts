@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { CampaignsComponent } from './campaigns/campaigns.component';
 
 import { LoginComponent } from './login/login.component';
+import { CandidateOverviewComponent } from './candidates/candidate-overview/candidate-overview.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 HomepageComponent,
 LoginComponent,
 CampaignsComponent,
+CandidateOverviewComponent
 
   ],
   imports: [

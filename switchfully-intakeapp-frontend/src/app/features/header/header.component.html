@@ -6,8 +6,8 @@
                 </div>
                 
                 <div class="col-3 text-right"> 
-                    <p>currntly logged on as <strong>{{currentUserToken.Token}}</strong> </p>
-                    <a class="nav-item nav-link" (click)="logout()">Logout</a>
+                    <p>currntly logged on as <strong>{{currentUser.firstName}} {{currentUser.lastName}} </strong> </p> 
+                    <button class="nav-item nav-link" (click)="logout()">Logout</button>
                 </div>
                 
             </div>

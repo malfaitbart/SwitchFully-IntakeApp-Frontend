@@ -1,4 +1,16 @@
 <section class= 'homepage' ><img src= '../assets/images/switchfully_logo.png'>
-<app-header></app-header>
-<router-outlet ></router-outlet>
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <app-header></app-header>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+
+
 </section>

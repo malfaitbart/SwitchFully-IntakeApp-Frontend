@@ -1,3 +1,5 @@
-<p>
-  header works!
-</p>
+
+    <div class="navbar-nav" *ngIf="currentUser">
+        <button class="nav-item nav-link" routerLink="/">Home</button>
+        <button class="nav-item nav-link" (click)="logout()">Logout</button>
+    </div>

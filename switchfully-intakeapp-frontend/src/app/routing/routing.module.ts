@@ -19,9 +19,9 @@ const routes: Routes = [
   { path: "campaigns", component: CampaignsComponent, canActivate: [AuthGuard] },
   { path: "campaigndetail/:id", component: CampaignDetailComponent, canActivate: [AuthGuard] },
   { path: "campaignnew", component: CampaignNewComponent, canActivate: [AuthGuard] },
-  { path: 'candidates', component: CandidateOverviewComponent },
-  { path: 'candidates/new', component: CandidateNewComponent },
-  { path: 'candidates/:id', component: CandidateDetailComponent }
+  { path: 'candidates', component: CandidateOverviewComponent, canActivate: [AuthGuard]},
+  { path: 'candidates/new', component: CandidateNewComponent, canActivate: [AuthGuard]},
+  { path: 'candidates/:id', component: CandidateDetailComponent, canActivate: [AuthGuard] }
 ]
 
 @NgModule({

@@ -21,17 +21,20 @@ export class HeaderComponent implements OnInit {
 
     logout() {
         this.authenticationService.logout();
+        this.currentUser = new LoggedOnUser(); 
         this.router.navigate(['/login']);
     }
+
     CurrentUserName(){
         if(this.currentUserToken && !this.currentUser.firstName){
             this.userService.getcurrent().pipe(first()).subscribe(user => {
-                this.currentUser = user; });
+                this.currentUser = user; });            
         }
+        return `${this.currentUser.firstName} ${this.currentUser.lastName}`
+    
     }
 
-    ngOnInit() {
-       this.CurrentUserName();
+    ngOnInit() {    
     }
 
 }

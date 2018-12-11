@@ -1,5 +1,5 @@
 <h2>New Item</h2>
-<form [formGroup]="campaignForm" (ngSubmit)="submitForm()">
+<form [formGroup]="newCampaignForm" (ngSubmit)="createCampaign(newCampaignForm.value)">
         <div class="form-group">
                 <label for="InputName" class="col-sm-2">Name:</label>
                 <input type="text" formControlName ="name" class="form-control" placeholder="The campaign name">

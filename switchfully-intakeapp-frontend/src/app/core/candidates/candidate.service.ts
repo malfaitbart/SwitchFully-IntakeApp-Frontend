@@ -19,7 +19,9 @@ export class CandidateService {
   ) { }
 
   getCandidates(): Observable<Candidate[]> {
-    return this.http.get<Candidate[]>(ApiUrl.urlCandidates);
+    return this.http.get<Candidate[]>(ApiUrl.urlCandidates).pipe(
+      tap(h => { console.log(`fetched all candidates`) }),
+    );
   }
 
   getById(id: string): Observable<Candidate> {
@@ -28,7 +30,7 @@ export class CandidateService {
 
         return this.http.get<Candidate>(url)
       .pipe(
-        tap(h => { console.log(`fetched customerid = ${id}`) }),
+        tap(h => { console.log(`fetched by candidateId = ${id}`) }),
       );
   }
 

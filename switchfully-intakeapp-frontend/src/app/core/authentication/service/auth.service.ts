@@ -23,17 +23,21 @@ export class AuthService {
 
   login(email: string, password: string) {
       return this.http.post<any>(`${ApiUrl.urlUsers}authenticate`, { email, password })
-          .pipe(map(user => {console.log(user)
-              if (user) {                
-                  sessionStorage.setItem('currentUserToken', JSON.stringify(user));
-                  this.currentUserTokenSubject.next(user);
-              }
-              return user;
+          .pipe(
+              map(user => {
+                console.log("user Logged in:")
+                console.log(user)
+                if (user) {                
+                    sessionStorage.setItem('currentUserToken', JSON.stringify(user));
+                    this.currentUserTokenSubject.next(user);
+                }
+                return user;
           }));
   }
 
   logout() {     
       sessionStorage.removeItem('currentUserToken');
+      console.log(`user logged out`);
       this.currentUserTokenSubject.next(null);
   }
 }

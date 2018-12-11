@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-campaigns',
-  templateUrl: './campaigns.component.html',
-  styleUrls: ['./campaigns.component.css']
+  templateUrl: './campaigns-overview.component.html',
+  styleUrls: ['./campaigns-overview.component.css']
 })
 export class CampaignsComponent implements OnInit {
   

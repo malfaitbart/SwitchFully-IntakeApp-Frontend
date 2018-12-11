@@ -4,7 +4,7 @@ import { HomepageComponent } from '../features/homepage/homepage.component';
 import { LoginComponent } from '../features/login/login.component';
 import { AuthGuard } from '../core/authentication/guard/auth.guard';
 
-import { CampaignsComponent } from '../features/campaigns/campaigns-overview/campaigns.component';
+import { CampaignsComponent } from '../features/campaigns/campaigns-overview/campaigns-overview.component';
 import { CampaignDetailComponent } from '../features/campaigns/campaign-detail/campaign-detail.component';
 import { CampaignNewComponent } from '../features/campaigns/campaign-new/campaign-new.component';
 

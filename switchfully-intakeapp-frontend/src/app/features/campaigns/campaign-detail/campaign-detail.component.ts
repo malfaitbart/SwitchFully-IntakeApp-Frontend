@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Campaign } from 'src/app/core/campaigns/campaign';
+import { Campaign } from 'src/app/core/campaigns/classes/campaign';
 import { CampaignService } from 'src/app/core/campaigns/campaign.service';
 import { ActivatedRoute } from '@angular/router';
 

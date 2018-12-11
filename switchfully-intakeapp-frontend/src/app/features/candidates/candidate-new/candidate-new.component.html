@@ -5,27 +5,27 @@
     <table id="mytable" class="table table-bordred table-striped">
       <tr>
         <th><label for="firstName">FirstName: </label></th>
-        <td><input type="text" formControlName="firstName"class="form-control" ></td>
+        <td><input type="text" formControlName="firstName" class="form-control"></td>
       </tr>
       <tr>
         <th><label for="lastName">LastName: </label></th>
-        <td><input type="text" formControlName="lastName"class="form-control" ></td>
+        <td><input type="text" formControlName="lastName" class="form-control"></td>
       </tr>
       <tr>
         <th><label for="email">Email: </label></th>
-        <td><input type="email" formControlName="email"class="form-control" ></td>
+        <td><input type="email" formControlName="email" class="form-control"></td>
       </tr>
-           
+
 
       <tr>
         <td colspan="2" class="text-center">
-            <button type="submit" class="btn btn-primary">Create</button>
-            <button type="reset" class="btn btn-default pull-right"><a routerLink="/campaigns">Cancel</a></button>
-   </td>
+          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="reset" class="btn btn-default pull-right"><a routerLink="/campaigns">Cancel</a></button>
+        </td>
       </tr>
     </table>
     <div *ngIf="error.isError" class="alert alert-danger">
-        {{ error.errorMessage }}
-      </div>
+      {{ error.errorMessage }}
+    </div>
   </form>
 </div>

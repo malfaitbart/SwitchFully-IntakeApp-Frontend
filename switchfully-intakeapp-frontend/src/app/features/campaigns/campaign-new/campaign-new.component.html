@@ -1,34 +1,34 @@
 <h2>New Campaign</h2>
 
 <form [formGroup]="newCampaignForm" (ngSubmit)="createCampaign(newCampaignForm.value)">
-                <table id="mytable" class="table table-bordred table-striped">
-                                <tr> 
-        
-               <th><label for="InputName" class="col-sm-2">Name:</label></th>
-                <td><input type="text" formControlName ="name" class="form-control" placeholder="The campaign name"></td>
-        </tr>
-       <tr>
-                <th><label for="InputClient">Client:</label></th>                
-               <td><input  type="text" formControlName ="client" class="form-control"  placeholder="the client name"></td>
-        </tr>
-        <tr>
-                <th><label for="InputPrice">StartDate:</label></th>                
-               <td><input type="date" formControlName ="startDate" class="form-control"  ></td>
-        </tr>
-        <tr>
-                <th><label for="InputAmountOfStock">EndDate:</label></th>              
-                <td><input type="date" formControlName ="endDate" class="form-control"  ></td>
-        </tr>
-        <tr>
-        
-               <td colspan="2" class="text-center"> 
-                <button type="submit" class="btn btn-primary">Create</button>
-                <button type="reset" class="btn btn-default pull-right"><a routerLink="/campaigns">Cancel</a></button>
-        </td>
-</tr>
+  <table id="mytable" class="table table-bordred table-striped">
+    <tr>
 
-        </table>
-        <div *ngIf="error.isError" class="alert alert-danger">
-                        {{ error.errorMessage }}
-                </div>
+      <th><label for="InputName" class="col-sm-2">Name:</label></th>
+      <td><input type="text" formControlName="name" class="form-control" placeholder="The campaign name"></td>
+    </tr>
+    <tr>
+      <th><label for="InputClient">Client:</label></th>
+      <td><input type="text" formControlName="client" class="form-control" placeholder="the client name"></td>
+    </tr>
+    <tr>
+      <th><label for="InputPrice">StartDate:</label></th>
+      <td><input type="date" formControlName="startDate" class="form-control"></td>
+    </tr>
+    <tr>
+      <th><label for="InputAmountOfStock">EndDate:</label></th>
+      <td><input type="date" formControlName="endDate" class="form-control"></td>
+    </tr>
+    <tr>
+
+      <td colspan="2" class="text-center">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="reset" class="btn btn-default pull-right"><a routerLink="/campaigns">Cancel</a></button>
+      </td>
+    </tr>
+
+  </table>
+  <div *ngIf="error.isError" class="alert alert-danger">
+    {{ error.errorMessage }}
+  </div>
 </form>

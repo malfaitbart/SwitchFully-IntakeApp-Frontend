@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Candidate } from 'src/app/core/candidates/candidate';
+import { Candidate } from 'src/app/core/candidates/classes/candidate';
 import { CandidateService } from 'src/app/core/candidates/candidate.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';

@@ -1,6 +1,6 @@
 import { Injectable, ApplicationInitStatus } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Candidate } from './candidate';
+import { Candidate } from './classes/candidate';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../apiUrl/apiUrl';
 import { tap } from 'rxjs/operators';

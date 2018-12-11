@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
 import { CandidateService } from 'src/app/core/candidates/candidate.service';
-import { Candidate } from 'src/app/core/candidates/candidate';
+import { Candidate } from 'src/app/core/candidates/classes/candidate';
 
 @Component({
   selector: 'app-candidate-detail',

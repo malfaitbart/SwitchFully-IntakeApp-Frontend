@@ -7,14 +7,14 @@
       <th>FirstName</th>
       <th>LastName</th>
       <th>Email</th>
-      <td>Actions</td>
+      <th>Actions</th>
     </thead>
     <tr *ngFor="let candidate of candidates">
       <td>{{candidate.id}}</td>
       <td>{{candidate.firstName}}</td>
       <td>{{candidate.lastName}}</td>
       <td>{{candidate.email}}</td>
-      <td><a routerLink="/candidates/{{candidate.id}}">Detail</a></td>
+      <td><button routerLink="/candidates/{{candidate.id}}">Detail</button></td>
     </tr>
   </table>
 </div>

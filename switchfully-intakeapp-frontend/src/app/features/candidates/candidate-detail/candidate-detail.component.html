@@ -16,7 +16,25 @@
     </tr>
     <tr>
       <th>Email:</th>
-      <td>{{candidate.email}}</td>
+      <td><a href="mailto:{{candidate.email}}">{{candidate.email}}</a></td>
+    </tr>
+    <tr>
+      <th>Phone:</th>
+      <td>{{candidate.phone}}</td>
+    </tr>
+    <tr>
+      <th>LinkedIn:</th>
+      <td><a href="{{candidate.linkedin}}">{{candidate.linkedIn}}</a></td>
+    </tr>
+    <tr>
+      <th>Comment:</th>
+      <td>{{candidate.comment}}</td>
+    </tr>
+    <tr>
+      <th>&nbsp;</th>
+      <td>
+        <button class="" routerLink="/jobapplications/new">New JobApplication</button>
+      </td>
     </tr>
   </table>
 </div>

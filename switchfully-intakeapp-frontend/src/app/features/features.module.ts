@@ -9,6 +9,9 @@ import { CampaignNewComponent } from './campaigns/campaign-new/campaign-new.comp
 import { CandidateOverviewComponent } from './candidates/candidate-overview/candidate-overview.component';
 import { CandidateNewComponent } from './candidates/candidate-new/candidate-new.component';
 import { CandidateDetailComponent } from './candidates/candidate-detail/candidate-detail.component';
+import { JobapplicationOverviewComponent } from './jobapplications/jobapplication-overview/jobapplication-overview.component';
+import { JobapplicationDetailComponent } from './jobapplications/jobapplication-detail/jobapplication-detail.component';
+import { JobapplicationNewComponent } from './jobapplications/jobapplication-new/jobapplication-new.component';
 
 
 @NgModule({
@@ -21,6 +24,9 @@ import { CandidateDetailComponent } from './candidates/candidate-detail/candidat
     CandidateOverviewComponent,
     CandidateNewComponent,
     CandidateDetailComponent,
+    JobapplicationOverviewComponent,
+    JobapplicationDetailComponent,
+    JobapplicationNewComponent,
   ],
   imports: [
     CoreModule,

@@ -28,7 +28,7 @@
     </tr>
     <tr>
       <th>Status:</th>
-      <td>{{jobapplication.status.description}} <button (click)="showDialog = !showDialog; value = jobapplication" class="float-right btn btn-danger btn-xs">reject!</button></td>
+      <td>{{jobapplication.status.description}} <button (click)="showDialog = !showDialog;" class="float-right btn btn-danger btn-xs">reject!</button></td>
     </tr>
   </table>
 </div>
@@ -39,4 +39,4 @@
 <button class="btn" (click)="goBack()">go back</button>
 
 
-<app-reject-popup [(visible)]="showDialog"  [(selectedJobApplication)] = "value" ></app-reject-popup>
+<app-reject-popup [(visible)]="showDialog"  ></app-reject-popup>

@@ -5,6 +5,8 @@ import { CampaignService } from './campaigns/campaign.service';
 import { AuthService } from './authentication/service/auth.service';
 import { AuthGuard } from './authentication/guard/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -14,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule,
   ],
   exports: [
     CommonModule,

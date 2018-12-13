@@ -1,0 +1,25 @@
+<div [@dialog] *ngIf="visible" class="dialog">
+  <button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn">X</button>
+
+
+  <div class="row col-12 top">
+    <h1>Conformation</h1>
+  </div>
+
+  <div class="row col-12 ">
+    <div class="col-12 text-center item">
+      <h3>Are you sure you want to destroy this person's dreams ?</h3>
+    </div>
+  </div>
+  <div class="row col-12 itemBtn text-center">
+    <div class="col-6">
+      <button class="btn btn-success" (click)="reject()">Jep</button>
+    </div>
+    <div class="col-6">
+        <button class="btn btn-warning" (click)="close()">Nowp</button>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="visible" class="overlay" (click)="close()"></div>

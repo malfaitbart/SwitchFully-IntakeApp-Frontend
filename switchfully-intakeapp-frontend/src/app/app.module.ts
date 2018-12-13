@@ -14,7 +14,7 @@ import { ErrorInterceptor } from './core/authentication/helpers/errorInterceptor
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

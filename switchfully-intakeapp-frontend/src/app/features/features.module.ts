@@ -9,14 +9,9 @@ import { CampaignNewComponent } from './campaigns/campaign-new/campaign-new.comp
 import { CandidateOverviewComponent } from './candidates/candidate-overview/candidate-overview.component';
 import { CandidateNewComponent } from './candidates/candidate-new/candidate-new.component';
 import { CandidateDetailComponent } from './candidates/candidate-detail/candidate-detail.component';
-<<<<<<< HEAD
-import { UploadComponent } from './upload/upload.component';
-=======
 import { JobapplicationOverviewComponent } from './jobapplications/jobapplication-overview/jobapplication-overview.component';
 import { JobapplicationDetailComponent } from './jobapplications/jobapplication-detail/jobapplication-detail.component';
 import { JobapplicationNewComponent } from './jobapplications/jobapplication-new/jobapplication-new.component';
->>>>>>> e96465169e9ebb8042a79ce847e7802058478aa4
-
 
 @NgModule({
   declarations: [
@@ -28,13 +23,10 @@ import { JobapplicationNewComponent } from './jobapplications/jobapplication-new
     CandidateOverviewComponent,
     CandidateNewComponent,
     CandidateDetailComponent,
-<<<<<<< HEAD
-    UploadComponent,
-=======
     JobapplicationOverviewComponent,
     JobapplicationDetailComponent,
     JobapplicationNewComponent,
->>>>>>> e96465169e9ebb8042a79ce847e7802058478aa4
+
   ],
   imports: [
     CoreModule,

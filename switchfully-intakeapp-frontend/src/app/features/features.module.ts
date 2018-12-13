@@ -13,6 +13,7 @@ import { JobapplicationOverviewComponent } from './jobapplications/jobapplicatio
 import { JobapplicationDetailComponent } from './jobapplications/jobapplication-detail/jobapplication-detail.component';
 import { JobapplicationNewComponent } from './jobapplications/jobapplication-new/jobapplication-new.component';
 import { FileUploadComponent } from './jobapplications/file-upload/file-upload.component';
+import { RejectPopupComponent } from './jobapplications/reject-popup/reject-popup.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { FileUploadComponent } from './jobapplications/file-upload/file-upload.c
     JobapplicationDetailComponent,
     JobapplicationNewComponent,
     FileUploadComponent,
+    RejectPopupComponent,
   ],
   imports: [
     CoreModule,

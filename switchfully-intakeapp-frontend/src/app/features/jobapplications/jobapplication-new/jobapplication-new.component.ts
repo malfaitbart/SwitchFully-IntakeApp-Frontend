@@ -55,5 +55,5 @@ export class JobapplicationNewComponent implements OnInit {
       .subscribe(campaigns => this.campaigns = campaigns)
   }
 
-
+goback(){}
 }

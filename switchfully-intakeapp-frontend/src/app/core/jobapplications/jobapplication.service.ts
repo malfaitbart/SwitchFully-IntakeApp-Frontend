@@ -39,9 +39,9 @@ export class JobapplicationService {
   }
 
   rejectJobApplications(givenId: string): Observable<JobApplication>  {
-    return this.http.put<JobApplication>(`${ApiUrl.urlJobApplications}reject`, givenId, httpOptions)
+    return this.http.put<JobApplication>(`${ApiUrl.urlJobApplications}reject`, givenId)
     .pipe(
-        tap(() =>  console.log(`rejected campaignId = ${givenId}`) )
+        tap(() =>  console.log(`rejected campaignId = ${givenId}`) )        
       );
   }
 }

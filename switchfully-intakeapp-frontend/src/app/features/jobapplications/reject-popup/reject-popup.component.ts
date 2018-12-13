@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter } from '@angular/core';
 
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, style, animate, transition } from '@angular/animations';
 import { JobApplication } from 'src/app/core/jobapplications/classes/jobapplication';
 import { JobapplicationService } from 'src/app/core/jobapplications/jobapplication.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-reject-popup',
@@ -26,7 +27,7 @@ export class RejectPopupComponent implements OnInit {
   @Input() selectedJobApplication: JobApplication; 
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
     
-  constructor(private jobapplicationservice: JobapplicationService) { }
+  constructor(private jobapplicationservice: JobapplicationService, private location: Location) { }
 
   ngOnInit() {
   }
@@ -37,6 +38,7 @@ export class RejectPopupComponent implements OnInit {
   }
   reject(){
     console.log(this.selectedJobApplication.id);
-    this.jobapplicationservice.rejectJobApplications(this.selectedJobApplication.id);    
+    this.jobapplicationservice.rejectJobApplications(this.selectedJobApplication.id);  
+    this.location.back();  
   }
 }

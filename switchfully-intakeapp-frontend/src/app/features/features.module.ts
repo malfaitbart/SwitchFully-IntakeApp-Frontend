@@ -9,6 +9,7 @@ import { CampaignNewComponent } from './campaigns/campaign-new/campaign-new.comp
 import { CandidateOverviewComponent } from './candidates/candidate-overview/candidate-overview.component';
 import { CandidateNewComponent } from './candidates/candidate-new/candidate-new.component';
 import { CandidateDetailComponent } from './candidates/candidate-detail/candidate-detail.component';
+import { UploadComponent } from './upload/upload.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CandidateDetailComponent } from './candidates/candidate-detail/candidat
     CandidateOverviewComponent,
     CandidateNewComponent,
     CandidateDetailComponent,
+    UploadComponent,
   ],
   imports: [
     CoreModule,

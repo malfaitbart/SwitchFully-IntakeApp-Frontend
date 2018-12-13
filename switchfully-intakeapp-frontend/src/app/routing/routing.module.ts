@@ -11,6 +11,7 @@ import { CampaignNewComponent } from '../features/campaigns/campaign-new/campaig
 import { CandidateOverviewComponent } from '../features/candidates/candidate-overview/candidate-overview.component';
 import { CandidateNewComponent } from '../features/candidates/candidate-new/candidate-new.component';
 import { CandidateDetailComponent } from '../features/candidates/candidate-detail/candidate-detail.component';
+import { UploadComponent } from '../features/upload/upload.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,7 +22,9 @@ const routes: Routes = [
   { path: "campaignnew", component: CampaignNewComponent, canActivate: [AuthGuard] },
   { path: 'candidates', component: CandidateOverviewComponent, canActivate: [AuthGuard]},
   { path: 'candidates/new', component: CandidateNewComponent, canActivate: [AuthGuard]},
-  { path: 'candidates/:id', component: CandidateDetailComponent, canActivate: [AuthGuard] }
+  { path: 'candidates/:id', component: CandidateDetailComponent, canActivate: [AuthGuard] },
+  { path: 'upload', component: UploadComponent , canActivate: [AuthGuard] },
+  
 ]
 
 @NgModule({

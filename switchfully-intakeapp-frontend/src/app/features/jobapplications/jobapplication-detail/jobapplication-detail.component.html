@@ -1,0 +1,39 @@
+<h1>Job Application Detail</h1>
+
+<div class="table-responsive" *ngIf="(jobapplication$ | async) as jobapplication else loading">
+  <table id="mytable" class="table table-bordred table-striped">
+    <tr>
+      <th>Id: </th>
+      <td>{{jobapplication.id}}</td>
+    </tr>
+    <tr>
+      <th>CampagneId: </th>
+      <td>{{jobapplication.campaignId}}</td>
+    </tr>
+    <tr>
+      <th>Campagne: </th>
+      <td>{{jobapplication.campaign.name}}</td>
+    </tr>
+    <tr>
+      <th>CandidateId: </th>
+      <td>{{jobapplication.candidateId}}</td>
+    </tr>
+    <tr>
+      <th>Candidate: </th>
+      <td>{{jobapplication.candidate.firstName}} {{jobapplication.candidate.lastName}}</td>
+    </tr>
+    <tr>
+      <th>Email:</th>
+      <td>{{jobapplication.candidate.email}}</td>
+    </tr>
+    <tr>
+      <th>Status:</th>
+      <td>{{jobapplication.status.description}}</td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #loading>
+  Loading...
+</ng-template>
+<button (click)="goBack()">go back</button>

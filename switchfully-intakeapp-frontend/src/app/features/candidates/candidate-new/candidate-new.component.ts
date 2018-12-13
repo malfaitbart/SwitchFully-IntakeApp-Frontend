@@ -15,7 +15,10 @@ export class CandidateNewComponent implements OnInit {
   newCandidateForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-    email: new FormControl('')
+    email: new FormControl(''),
+    phone: new FormControl(''),
+    linkedin: new FormControl(''),
+    comment: new FormControl('')
   })
 
   constructor(
@@ -31,29 +34,29 @@ export class CandidateNewComponent implements OnInit {
     if(this.error.isError)
     {return}
     this.candidateService.createCandidate(candidate)
-      .subscribe(() => this.router.navigate(['/candidates']));   
+      .subscribe(() => this.router.navigate(['/candidates']));
 
   }
 
-  
-  
-  formValidation(candidate: Candidate){    
+
+
+  formValidation(candidate: Candidate){
     this.error={isError:false,errorMessage:''};
-  
+
     //input
     if( candidate.firstName === null || candidate.firstName.match(/^ *$/) ){
       this.error={isError:true,errorMessage:`firstName is requierd`};
       return;
-    } 
+    }
     if( candidate.lastName === null || candidate.lastName.match(/^ *$/) ){
       this.error={isError:true,errorMessage:`lastName is requierd`};
       return;
-    } 
+    }
     if( candidate.email === null || !candidate.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]*$/)){
       console.log(candidate.email)
       this.error={isError:true,errorMessage:`email is requierd in the folowing format(abcde@fgh.ijk)`};
       return;
-    } 
+    }
 
   }
 

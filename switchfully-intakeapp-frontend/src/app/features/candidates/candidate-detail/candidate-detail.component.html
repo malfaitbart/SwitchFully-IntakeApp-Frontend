@@ -1,6 +1,7 @@
 <h1>Candidate Detail</h1>
 
 <div class="table-responsive" *ngIf="(candidate$ | async) as candidate else loading">
+  <form [formGroup]="newJobApplicationForm" (ngSubmit)="createJobApplication(newJobApplicationForm.value)">
   <table id="mytable" class="table table-bordred table-striped">
     <tr>
       <th>Id: </th>
@@ -16,9 +17,36 @@
     </tr>
     <tr>
       <th>Email:</th>
-      <td>{{candidate.email}}</td>
+      <td><a href="mailto:{{candidate.email}}">{{candidate.email}}</a></td>
     </tr>
-  </table>
+    <tr>
+      <th>Phone:</th>
+      <td>{{candidate.phone}}</td>
+    </tr>
+    <tr>
+      <th>LinkedIn:</th>
+      <td><a href="{{candidate.linkedin}}">{{candidate.linkedIn}}</a></td>
+    </tr>
+    <tr>
+      <th>Comment:</th>
+      <td>{{candidate.comment}}</td>
+    </tr>
+      <tr>
+        <th>
+          <select formControlName="campaignId">
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
+            <option *ngFor="let campaign of campaigns" [value]="campaign.campaignId">
+              {{campaign.name}}
+            </option>
+          </select>
+        </th>
+        <td>
+            <input type="hidden" formControlName="candidateId" [ngModel]="candidateId">
+            <button type="submit">New JobApplication</button>
+        </td>
+      </tr>
+    </table>
+  </form>
 </div>
 
 <ng-template #loading>

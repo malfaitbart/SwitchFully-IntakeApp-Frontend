@@ -1,0 +1,43 @@
+<h1>New Job Application</h1>
+
+<div class="table-responsive">
+  <form [formGroup]="newJobApplicationForm" (ngSubmit)="createJobApplication(newJobApplicationForm.value)">
+    <table id="mytable" class="table table-bordred table-striped">
+      <tr>
+        <th><label for="">Campaign: </label></th>
+        <td>
+          <select formControlName="campaignId">
+              <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
+            <option *ngFor="let campaign of campaigns" [value]="campaign.campaignId">
+              {{campaign.name}}
+            </option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>Candidate: </th>
+        <td>
+          <select formControlName="candidateId">
+              <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
+            <option *ngFor="let candidate of candidates" [value]="candidate.id">
+              {{candidate.firstName}} {{candidate.lastName}}
+            </option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-center">
+          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="reset" class="btn btn-default pull-right"><a routerLink="/jobapplications">Cancel</a></button>
+        </td>
+      </tr>
+    </table>
+
+  </form>
+  {{newJobApplicationForm.value}}
+</div>
+
+<ng-template #loading>
+  Loading...
+</ng-template>
+<button (click)="goBack()">go back</button>

@@ -19,15 +19,14 @@ export class JobapplicationService {
     private http: HttpClient
   ) { }
 
-  getJobApplications(): Observable<JobApplication[]>{
+  getJobApplications(): Observable<JobApplication[]> {
     return this.http.get<JobApplication[]>(ApiUrl.urlJobApplications).pipe(
-      tap(jp => { console.log('fetched all jobapplications')}),
+      tap(jp => { console.log('fetched all jobapplications') }),
     );
   }
 
   getById(id: string): Observable<JobApplication> {
-    const url = `${ApiUrl.urlJobApplications}/${id}`;
-        return this.http.get<JobApplication>(url)
+    return this.http.get<JobApplication>(`${ApiUrl.urlJobApplications}${id}`)
       .pipe(
         tap(() => { console.log(`fetched by jobapplicationid = ${id}`) }),
       );
@@ -39,4 +38,10 @@ export class JobapplicationService {
     )
   }
 
+  rejectJobApplications(givenId: string): Observable<JobApplication>  {
+    return this.http.put<JobApplication>(`${ApiUrl.urlJobApplications}reject`, givenId, httpOptions)
+    .pipe(
+        tap(() =>  console.log(`rejected campaignId = ${givenId}`) )
+      );
+  }
 }

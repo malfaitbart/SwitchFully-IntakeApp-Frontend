@@ -28,7 +28,7 @@
     </tr>
     <tr>
       <th>Status:</th>
-      <td>{{jobapplication.status.description}}</td>
+      <td>{{jobapplication.status.description}} <button (click)="showDialog = !showDialog; value = jobapplication" class="float-right btn btn-danger btn-xs">reject!</button></td>
     </tr>
   </table>
 </div>
@@ -36,4 +36,7 @@
 <ng-template #loading>
   Loading...
 </ng-template>
-<button (click)="goBack()">go back</button>
+<button class="btn" (click)="goBack()">go back</button>
+
+
+<app-reject-popup [(visible)]="showDialog"  [(selectedJobApplication)] = "value" ></app-reject-popup>

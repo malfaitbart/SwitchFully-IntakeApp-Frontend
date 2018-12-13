@@ -12,6 +12,7 @@ import { CandidateDetailComponent } from './candidates/candidate-detail/candidat
 import { JobapplicationOverviewComponent } from './jobapplications/jobapplication-overview/jobapplication-overview.component';
 import { JobapplicationDetailComponent } from './jobapplications/jobapplication-detail/jobapplication-detail.component';
 import { JobapplicationNewComponent } from './jobapplications/jobapplication-new/jobapplication-new.component';
+import { RejectPopupComponent } from './jobapplications/reject-popup/reject-popup.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,11 @@ import { JobapplicationNewComponent } from './jobapplications/jobapplication-new
     JobapplicationOverviewComponent,
     JobapplicationDetailComponent,
     JobapplicationNewComponent,
+<<<<<<< HEAD
 
+=======
+    RejectPopupComponent,
+>>>>>>> 7e930f0dba4a3552db5090cd9d5f9d8ee6666039
   ],
   imports: [
     CoreModule,

@@ -12,6 +12,7 @@ import { CandidateDetailComponent } from './candidates/candidate-detail/candidat
 import { JobapplicationOverviewComponent } from './jobapplications/jobapplication-overview/jobapplication-overview.component';
 import { JobapplicationDetailComponent } from './jobapplications/jobapplication-detail/jobapplication-detail.component';
 import { JobapplicationNewComponent } from './jobapplications/jobapplication-new/jobapplication-new.component';
+import { FileUploadComponent } from './jobapplications/file-upload/file-upload.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { JobapplicationNewComponent } from './jobapplications/jobapplication-new
     JobapplicationOverviewComponent,
     JobapplicationDetailComponent,
     JobapplicationNewComponent,
+    FileUploadComponent,
   ],
   imports: [
     CoreModule,

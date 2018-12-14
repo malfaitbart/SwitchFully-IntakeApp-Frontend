@@ -35,13 +35,15 @@
     </table>
 
     <div id="addCampaign">
+       
       <h5>Add candidate to campaign</h5>
       <select formControlName="campaignId" id="item">
-        <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
+        <option disabled hidden [value]="">-- select --</option>
         <option *ngFor="let campaign of campaigns" [value]="campaign.campaignId">
           {{campaign.name}}
         </option>
       </select>
+     
       <input type="hidden" formControlName="candidateId" [ngModel]="candidateId">
       <button class="btn btn-success" id="item" type="submit">New JobApplication</button>
     </div>

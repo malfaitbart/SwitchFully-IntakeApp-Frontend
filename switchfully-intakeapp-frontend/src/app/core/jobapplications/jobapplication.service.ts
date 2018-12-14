@@ -4,7 +4,7 @@ import { JobApplication } from './classes/jobapplication';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../apiUrl/apiUrl';
 import { tap } from 'rxjs/operators';
-import { JobApplicationCreate } from './classes/jobapplicationCreate';
+import { JobApplicationCreate  } from './classes/jobapplicationCreate';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -32,8 +32,8 @@ export class JobapplicationService {
       );
   }
 
-  createJobApplication(jobapplication: JobApplicationCreate): Observable<JobApplicationCreate> {
-    return this.http.post<JobApplicationCreate>(ApiUrl.urlJobApplications, jobapplication, httpOptions).pipe(
+  createJobApplication(jobapplication: JobApplicationCreate): Observable<JobApplication> {
+    return this.http.post<JobApplication>(ApiUrl.urlJobApplications, jobapplication, httpOptions).pipe(
       tap(() => console.log('jobapplication added'))
     )
   }

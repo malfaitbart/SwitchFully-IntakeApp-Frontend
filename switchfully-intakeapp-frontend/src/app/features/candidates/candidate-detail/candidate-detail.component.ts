@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { CandidateService } from 'src/app/core/candidates/candidate.service';
 import { Candidate } from 'src/app/core/candidates/classes/candidate';
@@ -27,7 +27,8 @@ export class CandidateDetailComponent implements OnInit {
   campaigns: Campaign[];
 
   newJobApplicationForm= new FormGroup({
-    campaignId: new FormControl(''),
+    campaignId: new FormControl('',[
+      Validators.required]) ,
     candidateId: new FormControl('')
   })
 
@@ -56,6 +57,7 @@ export class CandidateDetailComponent implements OnInit {
     this.campaignservice.getCampaigns()
       .subscribe(campaigns => this.campaigns = campaigns)
   }
+
   createJobApplication(jobapplication: JobApplicationCreate): void {
     console.log(this.newJobApplicationForm.value);
     console.log(jobapplication);
@@ -63,7 +65,7 @@ export class CandidateDetailComponent implements OnInit {
     console.log('candidateId: ' + jobapplication.candidateId);
 
     this.jobapplicationservice.createJobApplication(jobapplication)
-      .subscribe(() => this.router.navigate(['/jobapplications']));
+      .subscribe( jobapp => this.router.navigate([`/jobapplications/${jobapp.id}`]));
   }
 
   goBack(): void {

@@ -1,19 +1,19 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark box-header-border box-header-shadow " *ngIf="currentUserToken">
   <div class="container">
     <div class="col-8">
-      <button class="nav-item nav-link" routerLink="/">Home</button>
-      <button class="nav-item nav-link" routerLink="/candidates">Candidates</button>
-      <button class="nav-item nav-link" routerLink="campaigns">Campaigns</button> <button class="nav-item nav-link"
-        routerLink="jobapplications">JobApplications</button>
+      <button class="nav-item nav-link btn btn-secondary" routerLink="/">Home</button>
+      <button class="nav-item nav-link btn btn-secondary" routerLink="/candidates">Candidates</button>
+      <button class="nav-item nav-link btn btn-secondary" routerLink="campaigns">Campaigns</button> 
+      <button class="nav-item nav-link btn btn-secondary" routerLink="jobapplications">JobApplications</button>
     </div>
 
 
     <div class="col-3 text-right">
-      <p>currently logged on as </p>
+      <p>currently logged on as: </p>
       <p><strong>{{CurrentUserName()}}</strong> </p>
     </div>
     <div class="col-1">
-      <button class="nav-item nav-link" (click)="logout()">Logout</button>
+      <button class="nav-item nav-link btn btn-secondary" (click)="logout()">Logout</button>
     </div>
 
   </div>

@@ -1,5 +1,27 @@
 .container{
 background-color: rgba(255, 255,255, 0.60);
 height: 100%;
-margin-top: 60px;
+margin-top: 6em;
+}
+.footerWrap {
+    width:100%;
+    position: relative;
+    bottom:0em;
+}
+.footer {
+    width:100%;
+    margin:auto;
+}
+.footerContent {
+    float:left;
+    width:100%;
+    padding:2em 0;
+}
+.footer p {
+    float:left;
+     width:100%; 
+     text-align:center; 
+}
+img{
+    margin-top: 2em;
 }

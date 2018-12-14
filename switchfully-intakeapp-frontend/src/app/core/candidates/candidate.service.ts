@@ -25,10 +25,7 @@ export class CandidateService {
   }
 
   getById(id: string): Observable<Candidate> {
-    // const url = `${ApiUrl.urlCandidates}/${id}`;
-    const url = `http://localhost:59089/api/Candidates/${id}`;
-
-        return this.http.get<Candidate>(url)
+    return this.http.get<Candidate>(`${ApiUrl.urlCandidates}${id}`)
       .pipe(
         tap(h => { console.log(`fetched by candidateId = ${id}`) }),
       );

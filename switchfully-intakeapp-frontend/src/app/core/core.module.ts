@@ -30,7 +30,7 @@ import { JobapplicationService } from './jobapplications/jobapplication.service'
     CampaignService,
     AuthService,
     AuthGuard,
-    JobapplicationService
+    JobapplicationService,
   ]
 
 })

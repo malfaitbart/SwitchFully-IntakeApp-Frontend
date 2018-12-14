@@ -73,7 +73,9 @@ body {
   }
 
 .detailPageTable th{
-   text-align: right
+   text-align: right;
+   width: 30%;
+   
 }
   /* .box-section-shadow {
     box-shadow: 0.50rem -0.50rem 0.5rem rgba(0,0,0, 0.05);

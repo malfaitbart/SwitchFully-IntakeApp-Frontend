@@ -18,7 +18,6 @@ import { JobapplicationDetailComponent } from '../features/jobapplications/jobap
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: "campaigns", component: CampaignsComponent, canActivate: [AuthGuard] },
   { path: "campaigndetail/:id", component: CampaignDetailComponent, canActivate: [AuthGuard] },
@@ -27,7 +26,8 @@ const routes: Routes = [
   { path: 'candidates/new', component: CandidateNewComponent, canActivate: [AuthGuard] },
   { path: 'candidates/:id', component: CandidateDetailComponent, canActivate: [AuthGuard] },
   { path: 'jobapplications', component: JobapplicationOverviewComponent, canActivate: [AuthGuard]},
-  { path: 'jobapplications/:id', component: JobapplicationDetailComponent, canActivate: [AuthGuard]}
+  { path: 'jobapplications/:id', component: JobapplicationDetailComponent, canActivate: [AuthGuard]},
+  { path: '**', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard] },
 ]
 
 @NgModule({

@@ -16,8 +16,8 @@
     <tr *ngFor="let campaign of campaigns$ | async ">
         <td>{{campaign.name}}</td>
         <td>{{campaign.client}}</td>
-        <td>{{campaign.startDate}}</td>
-        <td>{{campaign.endDate}}</td>
+        <td>{{campaign.startDate | date: date}}</td>
+        <td>{{campaign.endDate | date : date}}</td>
 
         <ng-template *ngIf="campaign.status else True">
           <td>Not Active</td>

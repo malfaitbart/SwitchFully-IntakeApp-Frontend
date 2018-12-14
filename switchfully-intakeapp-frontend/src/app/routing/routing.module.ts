@@ -18,14 +18,11 @@ import { JobapplicationDetailComponent } from '../features/jobapplications/jobap
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: "campaigns", component: CampaignsComponent, canActivate: [AuthGuard] },
   { path: "campaigndetail/:id", component: CampaignDetailComponent, canActivate: [AuthGuard] },
   { path: "campaignnew", component: CampaignNewComponent, canActivate: [AuthGuard] },
-
-  
-
   { path: 'candidates', component: CandidateOverviewComponent, canActivate: [AuthGuard] },
   { path: 'candidates/new', component: CandidateNewComponent, canActivate: [AuthGuard] },
   { path: 'candidates/:id', component: CandidateDetailComponent, canActivate: [AuthGuard] },

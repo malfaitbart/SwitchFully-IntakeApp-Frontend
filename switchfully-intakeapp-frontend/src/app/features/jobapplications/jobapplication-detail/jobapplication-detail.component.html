@@ -1,22 +1,22 @@
 <h2>Job Application Detail</h2>
 
 <div class="table-responsive " *ngIf="(jobapplication$ | async) as jobapplication else loading">
-  <table id="mytable" class="table table-bordred table-striped detailPageTable">
-    <tr>
+  <table id="mytable" class="table table-bordred table-striped detailPageTable border">
+    <!-- <tr>
       <th>Id: </th>
       <td>{{jobapplication.id}}</td>
-    </tr>
-    <tr>
+    </tr> 
+     <tr>
       <th>CampagneId: </th>
       <td>{{jobapplication.campaignId}}</td>
     </tr>
     <tr>
-      <th>Campagne: </th>
-      <td>{{jobapplication.campaign.name}}</td>
-    </tr>
-    <tr>
       <th>CandidateId: </th>
       <td>{{jobapplication.candidateId}}</td>
+    </tr> -->
+    <tr>
+      <th>Campagne: </th>
+      <td>{{jobapplication.campaign.name}}</td>
     </tr>
     <tr>
       <th>Candidate: </th>
@@ -25,6 +25,10 @@
     <tr>
       <th>Email:</th>
       <td>{{jobapplication.candidate.email}}</td>
+    </tr>
+    <tr>
+      <th>Phone:</th>
+      <td>{{jobapplication.candidate.phone}}</td>
     </tr>
     <tr>
       <th>Status:</th>
@@ -39,4 +43,4 @@
 <button class="btn" (click)="goBack()">go back</button>
 
 
-<app-reject-popup [(visible)]="showDialog"  ></app-reject-popup>
+<app-reject-popup [(visible)]="showDialog"></app-reject-popup>

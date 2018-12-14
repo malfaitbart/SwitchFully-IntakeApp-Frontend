@@ -1,12 +1,12 @@
 <h2>Candidate Detail</h2>
 
-<div class="table-responsive detailPageTable" *ngIf="(candidate$ | async) as candidate else loading">
+<div class="table-responsive detailPageTable  " *ngIf="(candidate$ | async) as candidate else loading">
   <form [formGroup]="newJobApplicationForm" (ngSubmit)="createJobApplication(newJobApplicationForm.value)">
-    <table id="mytable" class="table table-bordred table-striped  ">
-      <tr>
+    <table id="mytable" class="table table-bordred table-striped border">
+      <!-- <tr>
         <th>Id: </th>
         <td>{{candidate.id}}</td>
-      </tr>
+      </tr> -->
       <tr>
         <th>FirstName: </th>
         <td>{{candidate.firstName}}</td>

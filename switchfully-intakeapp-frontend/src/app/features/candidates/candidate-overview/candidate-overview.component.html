@@ -1,20 +1,20 @@
-<h1>Candidates</h1>
-<button class="" routerLink="/candidates/new">New Candidate</button>
+<div>
+  <h2>Candidates</h2>
+  <button class="btn createNewBtn" routerLink="/candidates/new">New Candidate</button>
+</div>
 <div class="table-responsive">
   <table id="mytable" class="table table-bordred table-striped">
     <thead>
-      <th>ID</th>
       <th>FirstName</th>
       <th>LastName</th>
       <th>Email</th>
-      <th>Actions</th>
+      <th></th>
     </thead>
     <tr *ngFor="let candidate of candidates">
-      <td>{{candidate.id}}</td>
       <td>{{candidate.firstName}}</td>
       <td>{{candidate.lastName}}</td>
       <td>{{candidate.email}}</td>
-      <td><button routerLink="/candidates/{{candidate.id}}">Detail</button></td>
+      <td><button class="btn btn-success" routerLink="/candidates/{{candidate.id}}">Detail</button></td>
     </tr>
   </table>
 </div>

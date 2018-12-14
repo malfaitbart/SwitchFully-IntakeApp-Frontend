@@ -48,8 +48,7 @@ export class CandidateDetailComponent implements OnInit {
 
   getCandidate(): void{
     const id = this.route.snapshot.paramMap.get('id');
-    this.candidate$ = this.candidateService.getById(id);
-    console.log(this.candidate$);
+    this.candidate$ = this.candidateService.getById(id);   
     this.candidateId = id;
   }
 

@@ -13,8 +13,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install -g @angular/cli
-    npm install
-    npm audit fix
-    ng build --prod
+    npm install --only=dev
+    npm install -g @angular/cli    
+    ng build
   displayName: 'npm install and build'

@@ -27,11 +27,7 @@ import { RejectPopupComponent } from './jobapplications/reject-popup/reject-popu
     JobapplicationOverviewComponent,
     JobapplicationDetailComponent,
     JobapplicationNewComponent,
-<<<<<<< HEAD
-
-=======
     RejectPopupComponent,
->>>>>>> 7e930f0dba4a3552db5090cd9d5f9d8ee6666039
   ],
   imports: [
     CoreModule,

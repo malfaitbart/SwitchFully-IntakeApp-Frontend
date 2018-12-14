@@ -1,6 +1,6 @@
 <h2>Job Applications</h2>
 <div class="table-responsive">
-  <table id="mytable" class="table table-bordred table-striped">
+  <table id="mytable" class="table table-bordred table-striped border">
     <thead>
       <th>Candidate name</th>
       <th>Campaign name</th>
@@ -11,7 +11,7 @@
       <td>{{jobapplication.candidate.lastName}} {{jobapplication.candidate.firstName}}</td>
       <td>{{jobapplication.campaign.name}}</td>
       <td>{{jobapplication.status.description}}</td>
-      <td>
+      <td class="DetailBtnTdWidth">
         <button class="btn btn-success" routerLink="/jobapplications/{{jobapplication.id}}">Detail</button>
       </td>
     </tr>

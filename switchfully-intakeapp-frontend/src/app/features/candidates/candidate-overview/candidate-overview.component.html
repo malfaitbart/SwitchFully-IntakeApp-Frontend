@@ -3,7 +3,7 @@
   <button class="btn createNewBtn" routerLink="/candidates/new">New Candidate</button>
 </div>
 <div class="table-responsive">
-  <table id="mytable" class="table table-bordred table-striped">
+  <table id="mytable" class="table table-bordred table-striped border">
     <thead>
       <th>FirstName</th>
       <th>LastName</th>
@@ -14,7 +14,7 @@
       <td>{{candidate.firstName}}</td>
       <td>{{candidate.lastName}}</td>
       <td>{{candidate.email}}</td>
-      <td><button class="btn btn-success" routerLink="/candidates/{{candidate.id}}">Detail</button></td>
+      <td class="DetailBtnTdWidth"><button class="btn btn-success" routerLink="/candidates/{{candidate.id}}">Detail</button></td>
     </tr>
   </table>
 </div>

@@ -75,8 +75,13 @@ body {
 .detailPageTable th{
    text-align: right;
    width: 30%;
-   
-}
+   }
+   .btn{
+    min-width: 8em;
+  }
+  .DetailBtnTdWidth{
+    width: 9em;
+  }
   /* .box-section-shadow {
     box-shadow: 0.50rem -0.50rem 0.5rem rgba(0,0,0, 0.05);
   }

@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 })
 export class JobapplicationDetailComponent implements OnInit {
   jobapplication$: Observable<JobApplication>;
+  showDialog: boolean;
 
   constructor(
     private jobapplicationservice: JobapplicationService,

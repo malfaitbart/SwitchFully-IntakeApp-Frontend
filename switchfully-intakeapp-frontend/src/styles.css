@@ -37,7 +37,8 @@ body {
   } 
   
   .thead-green {
-      background: #72a71f;
+      background: #
+      72a71f;
       color: white;
   }
   */
@@ -74,7 +75,7 @@ body {
 
 .detailPageTable th{
    text-align: right;
-   width: 30%;
+   width: 36%;
    
 }
   /* .box-section-shadow {

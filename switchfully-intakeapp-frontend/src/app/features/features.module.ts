@@ -15,7 +15,6 @@ import { JobapplicationNewComponent } from './jobapplications/jobapplication-new
 import { FileUploadComponent } from './jobapplications/file-upload/file-upload.component';
 import { RejectPopupComponent } from './jobapplications/reject-popup/reject-popup.component';
 
-
 @NgModule({
   declarations: [
     HomepageComponent,

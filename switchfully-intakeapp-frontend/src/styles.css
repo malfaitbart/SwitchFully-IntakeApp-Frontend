@@ -1,66 +1,93 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 body {
-    min-height: 75rem;
+    /* min-height: 75rem; */
     background: #72a71f;
     background-image: linear-gradient(to right bottom, #72a71f, #5e8a1a, #4b6f15, #395410, #283b0b);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
   
   #main-content {
+    padding: 3em;
     padding-top: 3rem;
   }
 
   h2{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
+    text-align: center;
+    margin-bottom: 2em;
   }
   
   #page-footer {
     color: white;
   }
   
-  a {
+  /* a {
     color: #405c16;
   }
   
   a:hover {
     color: #72a71f;
     text-decoration: underline;
-  }
+  } 
   
   .thead-green {
       background: #72a71f;
       color: white;
   }
-  
+  */
   .box-shadow {
     box-shadow: 0 0 2rem rgba(0,0,0, 0.25);
   }
-  
-  .box-section-shadow {
-    box-shadow: 0.50rem -0.50rem 0.5rem rgba(0,0,0, 0.05);
-  }
-  
   .box-header-shadow {
     box-shadow: 0 0 1rem rgba(0,0,0, 0.25);
+  }  
+  .nav-link:hover  {
+    text-decoration: underline;
   }
+  .text-green {
+    color:#72a71f;
+  }
+  .label-title {
+    font-weight: bolder;
+  }
+              
+  .btn-success {
+    background-color: #72a71f;
+  }
+              
+ .btn-success:hover {
+    background-color: #405c16;
+  }
+  .createNewBtn{
+    line-height: 2em;
+    position: absolute;
+    right: 2em;
+    top:2em;
   
+  }
+
+.detailPageTable th{
+   text-align: right;
+   width: 30%;
+   
+}
+  /* .box-section-shadow {
+    box-shadow: 0.50rem -0.50rem 0.5rem rgba(0,0,0, 0.05);
+  }
   .box-light-background {
     background: rgba(255, 255, 255, 0.75);
-  }
+  } 
   
   .box-header-border {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   }
-  
-  .nav-link:hover  {
-    text-decoration: underline;
-  }
-  
-  .text-green {
-    color:#72a71f;
-  }
-  
+ 
   .parent-section {
     padding: 3rem;
   }
@@ -89,19 +116,7 @@ body {
     padding: 1rem;
     overflow:hidden;
   }
-  
-  .label-title {
-    font-weight: bolder;
-  }
-  
   .sub-title {
     font-size: 1rem;
   }
-  
-  .btn-success {
-    background-color: #72a71f;
-  }
-  
-  .btn-success:hover {
-    background-color: #405c16;
-  }
+  */

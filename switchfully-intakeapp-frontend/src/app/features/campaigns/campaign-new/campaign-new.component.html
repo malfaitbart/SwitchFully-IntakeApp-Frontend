@@ -4,7 +4,7 @@
   <table id="mytable" class="table table-bordred table-striped">
     <tr>
 
-      <th><label for="InputName" class="col-sm-2">Name:</label></th>
+      <th><label for="InputName">Name:</label></th>
       <td><input type="text" formControlName="name" class="form-control" placeholder="The campaign name"></td>
     </tr>
     <tr>
@@ -12,17 +12,17 @@
       <td><input type="text" formControlName="client" class="form-control" placeholder="the client name"></td>
     </tr>
     <tr>
-      <th><label for="InputPrice">StartDate:</label></th>
+      <th><label for="InputStartDate">StartDate:</label></th>
       <td><input type="date" formControlName="startDate" class="form-control"></td>
     </tr>
     <tr>
-      <th><label for="InputAmountOfStock">EndDate:</label></th>
-      <td><input type="date" formControlName="endDate" class="form-control"></td>
+      <th><label for="InputEndDate">EndDate:</label></th>
+      <td><input type="date" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" formControlName="endDate" class="form-control"></td>
     </tr>
     <tr>
 
       <td colspan="2" class="text-center">
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-success">Create</button>
         <button type="reset" class="btn btn-default pull-right"><a routerLink="/campaigns">Cancel</a></button>
       </td>
     </tr>

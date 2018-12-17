@@ -37,11 +37,6 @@ export class JobapplicationNewComponent implements OnInit {
   }
 
   createJobApplication(jobapplication: JobApplicationCreate): void {
-    console.log(this.newJobApplicationForm.value);
-    console.log(jobapplication);
-    console.log('campaignId: ' + jobapplication.campaignId);
-    console.log('candidateId: ' + jobapplication.candidateId);
-
     this.jobapplicationservice.createJobApplication(jobapplication)
       .subscribe(() => this.router.navigate(['/jobapplications']));
   }

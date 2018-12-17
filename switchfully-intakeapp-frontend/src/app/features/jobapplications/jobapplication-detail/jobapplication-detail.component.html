@@ -1,7 +1,7 @@
-<h1>Job Application Detail</h1>
+<h2>Job Application Detail</h2>
 
-<div class="table-responsive" *ngIf="(jobapplication$ | async) as jobapplication else loading">
-  <table id="mytable" class="table table-bordred table-striped">
+<div class="table-responsive " *ngIf="(jobapplication$ | async) as jobapplication else loading">
+  <table id="mytable" class="table table-bordred table-striped detailPageTable">
     <tr>
       <th>Id: </th>
       <td>{{jobapplication.id}}</td>

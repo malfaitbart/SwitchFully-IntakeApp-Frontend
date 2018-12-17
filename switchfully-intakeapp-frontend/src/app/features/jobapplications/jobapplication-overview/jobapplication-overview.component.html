@@ -1,19 +1,18 @@
-<h1>JobApplications</h1>
+<h2>Job Applications</h2>
 <div class="table-responsive">
   <table id="mytable" class="table table-bordred table-striped">
     <thead>
-      <th>ID</th>
-      <th>Candidate</th>
-      <th>CampaignId</th>
-      <th>StatusId</th>
+      <th>Candidate name</th>
+      <th>Campaign name</th>
+      <th>Status</th>
+      <th></th>
     </thead>
     <tr *ngFor="let jobapplication of jobapplications">
-      <td>{{jobapplication.id}}</td>
       <td>{{jobapplication.candidate.lastName}} {{jobapplication.candidate.firstName}}</td>
       <td>{{jobapplication.campaign.name}}</td>
       <td>{{jobapplication.status.description}}</td>
       <td>
-        <button routerLink="/jobapplications/{{jobapplication.id}}">Detail</button>
+        <button class="btn btn-success" routerLink="/jobapplications/{{jobapplication.id}}">Detail</button>
       </td>
     </tr>
     </table>

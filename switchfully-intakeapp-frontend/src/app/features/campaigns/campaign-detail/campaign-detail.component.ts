@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Campaign } from 'src/app/core/campaigns/classes/campaign';
 import { CampaignService } from 'src/app/core/campaigns/campaign.service';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-campaign-detail',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./campaign-detail.component.css']
 })
 export class CampaignDetailComponent implements OnInit {
-campaign: Campaign;
+campaign$: Observable<Campaign>;
   constructor(private campaignService: CampaignService,  private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -18,8 +19,8 @@ campaign: Campaign;
 
   getSingleCampaign(): void{
     const id = this.route.snapshot.paramMap.get('id');
-    this.campaignService.getSingleCampaign(id)
-    .subscribe(campaign => this.campaign = campaign);
+    this.campaign$ = this.campaignService.getSingleCampaign(id);
+   
   }
 
 }

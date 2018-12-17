@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http'
+import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
+import { FileUploadWithData } from 'src/app/core/jobapplications/classes/file';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-file-upload',
@@ -9,6 +11,14 @@ import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/c
 export class FileUploadComponent implements OnInit {
   public progress: number;
   public message: string;
+
+  fileupload: FileUploadWithData;
+
+  newUploadForm= new FormGroup({
+    data: new FormControl(''),
+    formdata: new FormControl('')
+  })
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -23,7 +33,7 @@ export class FileUploadComponent implements OnInit {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', `http://localhost:59089/api/Upload`, formData, {
+    const uploadReq = new HttpRequest('POST', `http://localhost:59089/api/Files`, formData, {
       reportProgress: true,
     });
 
@@ -33,5 +43,17 @@ export class FileUploadComponent implements OnInit {
       else if (event.type === HttpEventType.Response)
         this.message = event.body.toString();
     });
+  }
+
+  uploadv2(data: string, files){
+    console.log(data);
+
+    const formData = new FormData();
+
+    for (let file of files)
+      formData.append(file.name, file);
+
+
+    console.log(formData);
   }
 }

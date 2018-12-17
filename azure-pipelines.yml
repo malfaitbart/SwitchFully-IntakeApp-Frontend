@@ -14,9 +14,6 @@ steps:
 
 - script: |
     npm install
-    npm audit fix
     npm install -g @angular/cli
-    ng build --prod
-    npm i jasmine-reporters
-    npm run build
+    npm build
   displayName: 'npm install and build'

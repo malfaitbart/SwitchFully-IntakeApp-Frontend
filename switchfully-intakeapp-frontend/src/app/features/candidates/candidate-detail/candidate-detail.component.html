@@ -1,7 +1,6 @@
 <h2>Candidate Detail</h2>
 
 <div class="table-responsive detailPageTable" *ngIf="(candidate$ | async) as candidate else loading">
-  <form [formGroup]="newJobApplicationForm" (ngSubmit)="createJobApplication(newJobApplicationForm.value)">
     <table id="mytable" class="table table-bordred table-striped  ">
       <tr>
         <th>Id: </th>
@@ -36,16 +35,51 @@
 
     <div id="addCampaign">
       <h5>Add candidate to campaign</h5>
-      <select formControlName="campaignId" id="item">
-        <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
-        <option *ngFor="let campaign of campaigns" [value]="campaign.campaignId">
-          {{campaign.name}}
-        </option>
-      </select>
-      <input type="hidden" formControlName="candidateId" [ngModel]="candidateId">
-      <button class="btn btn-success" id="item" type="submit">New JobApplication</button>
+      <form [formGroup]="newJobApplicationForm" (ngSubmit)="createJobApplication()">
+      <table>
+        <tr>
+          <th colspan="3">
+            Please select the campaign and add your CV and motivationletter
+          </th>
+        </tr>
+        <tr>
+          <td>
+              Select campaign to apply for:
+          </td>
+          <td>
+            <select formControlName="campaignId" id="item" required>
+              <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
+              <option *ngFor="let campaign of campaigns" [value]="campaign.campaignId">
+                {{campaign.name}}
+              </option>
+            </select>
+          </td>
+          <td rowspan="3">
+              <input type="hidden" formControlName="candidateId" [ngModel]="candidateId">
+              <button class="btn btn-success" id="item" type="submit">New JobApplication</button>
+            </td>
+        </tr>
+        <tr>
+          <td>
+              Curiculum Vitea:
+          </td>
+          <td>
+            <input #CV type="file" class="form-control" name="CV" (change)="fileChangeCV(CV.files)"
+            /> <br />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Motivation letter:
+          </td>
+          <td>
+            <input #Motivation type="file" class="form-control" name="Motivation" (change)="fileChangeMotivation(Motivation.files)"
+            />
+          </td>
+          </tr>
+      </table>
+    </form>
     </div>
-  </form>
 </div>
 
 <ng-template #loading>

@@ -13,6 +13,7 @@ import { Campaign } from 'src/app/core/campaigns/classes/campaign';
 
 import { JobapplicationService } from 'src/app/core/jobapplications/jobapplication.service';
 import { JobApplicationCreate } from 'src/app/core/jobapplications/classes/jobapplicationCreate';
+import { JobApplication } from 'src/app/core/jobapplications/classes/jobapplication';
 
 @Component({
   selector: 'app-candidate-detail',
@@ -26,10 +27,12 @@ export class CandidateDetailComponent implements OnInit {
 
   campaigns: Campaign[];
 
-  newJobApplicationForm= new FormGroup({
+  newJobApplicationForm = new FormGroup({
     campaignId: new FormControl(''),
-    candidateId: new FormControl('')
-  })
+    candidateId: new FormControl(''),
+    CV: new FormControl(null),
+    motivation: new FormControl(null)
+  }, { updateOn: 'submit' })
 
   constructor(
     private candidateService: CandidateService,
@@ -46,25 +49,50 @@ export class CandidateDetailComponent implements OnInit {
     this.getAllCampaigns();
   }
 
-  getCandidate(): void{
+  getCandidate(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.candidate$ = this.candidateService.getById(id);   
+    this.candidate$ = this.candidateService.getById(id);
     this.candidateId = id;
   }
 
-  getAllCampaigns(){
+  getAllCampaigns() {
     this.campaignservice.getCampaigns()
       .subscribe(campaigns => this.campaigns = campaigns)
   }
-  createJobApplication(jobapplication: JobApplicationCreate): void {
-    console.log(this.newJobApplicationForm.value);
-    console.log(jobapplication);
-    console.log('campaignId: ' + jobapplication.campaignId);
-    console.log('candidateId: ' + jobapplication.candidateId);
 
-    this.jobapplicationservice.createJobApplication(jobapplication)
-      .subscribe(() => this.router.navigate(['/jobapplications']));
+  fileChangeCV(files: FileList) {
+    if (files && files[0].size > 0) {
+      this.newJobApplicationForm.patchValue({
+        CV: files[0]
+      });
+    }
   }
+  fileChangeMotivation(files: FileList) {
+    if (files && files[0].size > 0) {
+      this.newJobApplicationForm.patchValue({
+        motivation: files[0]
+      });
+    }
+  }
+
+  prepareData(): FormData{
+    const formModel = this.newJobApplicationForm.value;
+
+    let formdata= new FormData();
+    formdata.append("candidateid", formModel.candidateId);
+    formdata.append("campaignid", formModel.campaignId);
+    formdata.append("cv", formModel.cv);
+    formdata.append("motivation", formModel.motivation);
+    return formdata;
+  }
+
+  createJobApplication(): void {
+
+    // this.jobapplicationservice.createJobApplication(jobapplicationCreate)
+    //   .subscribe(() => this.router.navigate(['/jobapplications']));
+    if (this.newJobApplicationForm.valid) {
+      this.jobapplicationservice.createJobApplication(this.prepareData());
+  }  }
 
   goBack(): void {
     this.location.back();

@@ -10,4 +10,6 @@ export class JobApplication{
   campaign: Campaign;
   statusId: string;
   status: Status;
+  cvId :string;
+  motivationLetterId?: string;
 }

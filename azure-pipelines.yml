@@ -19,4 +19,4 @@ steps:
     command: custom
     workingDir: switchfully-intakeapp-frontend
     verbose: true
-    customCommand: 'build'
+    customCommand: 'run build'

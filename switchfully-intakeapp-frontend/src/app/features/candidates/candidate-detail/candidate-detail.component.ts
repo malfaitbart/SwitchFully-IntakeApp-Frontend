@@ -31,7 +31,7 @@ export class CandidateDetailComponent implements OnInit {
     candidateId: new FormControl(''),
     cv: new FormControl(null),
     motivation: new FormControl(null)
-  }, { updateOn: 'submit' })
+  })
 
   constructor(
     private candidateService: CandidateService,
@@ -59,53 +59,39 @@ export class CandidateDetailComponent implements OnInit {
       .subscribe(campaigns => this.campaigns = campaigns)
   }
 
-  upload(files) {
+  upload(files): Observable<any> {
     const formData = new FormData();
 
     for (let file of files) {
       formData.append(file.name, file);
     }
 
-    const uploadReq = new HttpRequest('POST', `http://localhost:59089/api/Files`, formData, {
-      responseType: 'text'
-    });
-
-    this.http.request(uploadReq)
-    .subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress)
-        console.log(Math.round(100 * event.loaded / event.total));
-      else if (event.type === HttpEventType.Response)
-        console.log(event.body.toString());
-    });
+    return this.http.post('http://localhost:59089/api/Files', formData, { responseType: 'text' });
   }
-  public requestDataFromMultipleSources(cv, motivation): Observable<any[]> {
-    let response1 = this.upload(cv);
-    let response2 = this.upload(motivation);
-    return forkJoin([response1, response2]);
-  }
-  createJobApplication(
-    jobapplicationcreate: JobApplicationCreate,
-    cvInput,
-    motivationInput) {
 
-    this.requestDataFromMultipleSources(cvInput, motivationInput)
-      .subscribe(responseList => {
-        console.log('cv: ' + responseList[0]);
-        console.log('moti: ' + responseList[1]);
+  create(jobapplicationcreate: JobApplicationCreate, cv, motivation) {
+    // forkJoin(this.upload(cv), this.upload(motivation))
+    this.getDataFromTwoResources(cv, motivation)
+      .subscribe(result => {
+        const jobAppToCreate = {
+          'campaignId': jobapplicationcreate.campaignId,
+          'candidateId': jobapplicationcreate.candidateId,
+          'cvId': result[0],
+          'motivationId': result[1]
+        };
+        console.log(`We're in`);
+        console.log(result);
+        this.jobapplicationservice.createJobApplication(jobAppToCreate)
+          .subscribe(result => console.log(result));
       });
-
-    // const toUpload: JobApplicationCreate = {
-    //   ...jobapplicationcreate,
-    //   cv: cvfile,
-    //   motivation: motifile
-    // }
-    // console.log(toUpload);
-
-
-    // this.jobapplicationservice.createJobApplication(toUpload)
-    //   .subscribe(() => this.router.navigate(['/jobapplications']));
-
   }
+
+  getDataFromTwoResources(cv, motivation): Observable<any[]> {
+    // The URLs in this example are dummy
+    let url1 = this.upload(cv);
+    let url2 = this.upload(motivation);
+    return forkJoin([url1, url2]);
+}
 
   goBack(): void {
     this.location.back();

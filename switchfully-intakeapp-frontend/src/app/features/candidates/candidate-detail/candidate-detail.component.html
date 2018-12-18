@@ -35,7 +35,7 @@
 
     <div id="addCampaign">
       <h5>Add candidate to campaign</h5>
-      <form [formGroup]="newJobApplicationForm" (ngSubmit)="createJobApplication(newJobApplicationForm.value, cv.files, motivation.files)">
+      <form [formGroup]="newJobApplicationForm" (ngSubmit)="create(newJobApplicationForm.value, cv.files, motivation.files)">
       <table>
         <tr>
           <th colspan="3">

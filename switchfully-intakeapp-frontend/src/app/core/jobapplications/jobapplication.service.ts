@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest } from '@angular/common/http'
 import { JobApplication } from './classes/jobapplication';
 import { Observable, throwError } from 'rxjs';
 import { ApiUrl } from '../apiUrl/apiUrl';
@@ -14,6 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class JobapplicationService {
+  result: JobApplicationCreate;
   constructor(
     private http: HttpClient
   ) { }
@@ -33,31 +34,16 @@ export class JobapplicationService {
       );
   }
 
-  uploadFile(file: FormData, doctype:string): Observable<string>{
-    const toUpload = {
-      type:doctype,
-      doc:file
-    }
-    console.log(toUpload);
-    return this.http.post<string>(ApiUrl.urlJobApplicationsUpload, toUpload)
-    .pipe(
-      tap(() => {console.log(`uploaded file`)}),
-      catchError(this.handleError)
-      );
-  }
-
-  createJobApplication(jobapplicationCreate: FormData): Observable<JobApplicationCreate> {
-    console.log(jobapplicationCreate);
-    return this.http.post<JobApplicationCreate>(ApiUrl.urlJobApplications, jobapplicationCreate, httpOptions).pipe(
-      tap(() => console.log('jobapplication added')),
-      catchError(this.handleError)
+  createJobApplication(jobapplication: JobApplicationCreate): Observable<JobApplication> {
+    return this.http.post<JobApplication>(ApiUrl.urlJobApplications, jobapplication, httpOptions).pipe(
+      tap(() => console.log('jobapplication added'))
     )
   }
 
-  rejectJobApplications(givenId: string){
-    return this.http.put<JobApplication>(`${ApiUrl.urlJobApplications}reject/id:string?id=${givenId}`,"rejected",httpOptions )
-    .pipe(
-        tap(() =>  console.log(`rejected campaignId = ${givenId}`)),
+  rejectJobApplications(givenId: string) {
+    return this.http.put<JobApplication>(`${ApiUrl.urlJobApplications}reject/id:string?id=${givenId}`, "rejected", httpOptions)
+      .pipe(
+        tap(() => console.log(`rejected campaignId = ${givenId}`)),
         catchError(this.handleError)
       );
   }

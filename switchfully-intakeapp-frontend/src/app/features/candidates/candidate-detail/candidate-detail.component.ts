@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Observable, forkJoin } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
+import { HttpClient, HttpRequest, HttpEventType } from '@angular/common/http';
 
 import { CandidateService } from 'src/app/core/candidates/candidate.service';
 import { Candidate } from 'src/app/core/candidates/classes/candidate';
@@ -13,7 +13,6 @@ import { Campaign } from 'src/app/core/campaigns/classes/campaign';
 
 import { JobapplicationService } from 'src/app/core/jobapplications/jobapplication.service';
 import { JobApplicationCreate } from 'src/app/core/jobapplications/classes/jobapplicationCreate';
-import { JobApplication } from 'src/app/core/jobapplications/classes/jobapplication';
 
 @Component({
   selector: 'app-candidate-detail',
@@ -30,7 +29,7 @@ export class CandidateDetailComponent implements OnInit {
   newJobApplicationForm = new FormGroup({
     campaignId: new FormControl(''),
     candidateId: new FormControl(''),
-    CV: new FormControl(null),
+    cv: new FormControl(null),
     motivation: new FormControl(null)
   }, { updateOn: 'submit' })
 
@@ -40,8 +39,8 @@ export class CandidateDetailComponent implements OnInit {
     private campaignservice: CampaignService,
     private route: ActivatedRoute,
     private location: Location,
-    private router: Router
-
+    private router: Router,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -60,39 +59,53 @@ export class CandidateDetailComponent implements OnInit {
       .subscribe(campaigns => this.campaigns = campaigns)
   }
 
-  fileChangeCV(files: FileList) {
-    if (files && files[0].size > 0) {
-      this.newJobApplicationForm.patchValue({
-        CV: files[0]
-      });
+  upload(files) {
+    const formData = new FormData();
+
+    for (let file of files) {
+      formData.append(file.name, file);
     }
+
+    const uploadReq = new HttpRequest('POST', `http://localhost:59089/api/Files`, formData, {
+      responseType: 'text'
+    });
+
+    this.http.request(uploadReq)
+    .subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress)
+        console.log(Math.round(100 * event.loaded / event.total));
+      else if (event.type === HttpEventType.Response)
+        console.log(event.body.toString());
+    });
   }
-  fileChangeMotivation(files: FileList) {
-    if (files && files[0].size > 0) {
-      this.newJobApplicationForm.patchValue({
-        motivation: files[0]
+  public requestDataFromMultipleSources(cv, motivation): Observable<any[]> {
+    let response1 = this.upload(cv);
+    let response2 = this.upload(motivation);
+    return forkJoin([response1, response2]);
+  }
+  createJobApplication(
+    jobapplicationcreate: JobApplicationCreate,
+    cvInput,
+    motivationInput) {
+
+    this.requestDataFromMultipleSources(cvInput, motivationInput)
+      .subscribe(responseList => {
+        console.log('cv: ' + responseList[0]);
+        console.log('moti: ' + responseList[1]);
       });
-    }
-  }
 
-  prepareData(): FormData{
-    const formModel = this.newJobApplicationForm.value;
+    // const toUpload: JobApplicationCreate = {
+    //   ...jobapplicationcreate,
+    //   cv: cvfile,
+    //   motivation: motifile
+    // }
+    // console.log(toUpload);
 
-    let formdata= new FormData();
-    formdata.append("candidateid", formModel.candidateId);
-    formdata.append("campaignid", formModel.campaignId);
-    formdata.append("cv", formModel.cv);
-    formdata.append("motivation", formModel.motivation);
-    return formdata;
-  }
 
-  createJobApplication(): void {
-
-    // this.jobapplicationservice.createJobApplication(jobapplicationCreate)
+    // this.jobapplicationservice.createJobApplication(toUpload)
     //   .subscribe(() => this.router.navigate(['/jobapplications']));
-    if (this.newJobApplicationForm.valid) {
-      this.jobapplicationservice.createJobApplication(this.prepareData());
-  }  }
+
+  }
 
   goBack(): void {
     this.location.back();

@@ -35,7 +35,7 @@
 
     <div id="addCampaign">
       <h5>Add candidate to campaign</h5>
-      <form [formGroup]="newJobApplicationForm" (ngSubmit)="createJobApplication()">
+      <form [formGroup]="newJobApplicationForm" (ngSubmit)="createJobApplication(newJobApplicationForm.value, cv.files, motivation.files)">
       <table>
         <tr>
           <th colspan="3">
@@ -47,7 +47,7 @@
               Select campaign to apply for:
           </td>
           <td>
-            <select formControlName="campaignId" id="item" required>
+            <select formControlName="campaignId" id="campaignId" required>
               <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
               <option *ngFor="let campaign of campaigns" [value]="campaign.campaignId">
                 {{campaign.name}}
@@ -64,8 +64,7 @@
               Curiculum Vitea:
           </td>
           <td>
-            <input #CV type="file" class="form-control" name="CV" (change)="fileChangeCV(CV.files)"
-            /> <br />
+            <input #cv type="file" class="form-control" name="cv" /><br />
           </td>
         </tr>
         <tr>
@@ -73,8 +72,7 @@
             Motivation letter:
           </td>
           <td>
-            <input #Motivation type="file" class="form-control" name="Motivation" (change)="fileChangeMotivation(Motivation.files)"
-            />
+            <input #motivation type="file" class="form-control" name="motivation" />
           </td>
           </tr>
       </table>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
 import { FileUploadWithData } from 'src/app/core/jobapplications/classes/file';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ApiUrl } from 'src/app/core/apiUrl/apiUrl';
 
 @Component({
   selector: 'app-file-upload',
@@ -14,7 +15,7 @@ export class FileUploadComponent implements OnInit {
 
   fileupload: FileUploadWithData;
 
-  newUploadForm= new FormGroup({
+  newUploadForm = new FormGroup({
     data: new FormControl(''),
     formdata: new FormControl('')
   })
@@ -45,13 +46,25 @@ export class FileUploadComponent implements OnInit {
     });
   }
 
-  uploadv2(data: string, files){
-    console.log(data);
+  uploadv2(data: string, files) {
+    console.log(files);
 
     const formData = new FormData();
 
-    for (let file of files)
+    for (let file of files){
       formData.append(file.name, file);
+      formData.append("testdata", data);
+    }
+
+    const uploadReq = new HttpRequest('POST', `http://localhost:59089/api/Files`, formData, {
+      responseType: 'text'
+    });
+
+    this.http.request(uploadReq)
+      .subscribe(event => {
+     if (event.type === HttpEventType.Response)
+          console.log(event.body.toString());
+      });
 
 
     console.log(formData);

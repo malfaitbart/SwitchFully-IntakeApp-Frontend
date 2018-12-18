@@ -36,10 +36,10 @@ export class JobapplicationNewComponent implements OnInit {
     this.getAllCandidates();
   }
 
-  createJobApplication(jobapplication: JobApplicationCreate): void {
-    this.jobapplicationservice.createJobApplication(jobapplication)
-      .subscribe(() => this.router.navigate(['/jobapplications']));
-  }
+  // createJobApplication(jobapplication: JobApplicationCreate): void {
+  //   this.jobapplicationservice.createJobApplication(jobapplication)
+  //     .subscribe(() => this.router.navigate(['/jobapplications']));
+  // }
 
   getAllCandidates(){
     this.candidateservice.getCandidates()

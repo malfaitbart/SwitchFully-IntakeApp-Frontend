@@ -1,0 +1,64 @@
+<div class="col-12" *ngIf="givenScreenings">
+  <div *ngFor="let item of givenScreenings">
+
+    <div class="row">
+      <div class="col">
+        <section class="box-section-shadow box-light-background sub-section">
+          <header>
+            
+            <a (click) = "toggleCommentField(item.name)"><span class="fas fa-2x fa-crop float-right text-dark"></span></a>
+            <h3><span class="fas fa-check-square text-green"></span>  {{item.name}} Screening</h3>
+            <hr>
+          </header>
+          <main>
+            <form>
+              <div class="form-group boxScreening" id="{{item.name}}">
+                <label class="label-title">Comments</label>
+                <textarea class="form-control" id="phoneScreeningNotesTextArea" rows="6" readonly>{{item.comment}}</textarea>
+              </div>
+            </form>
+          </main>
+        </section>
+        <div class="sub-section-complete"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="col-12" *ngIf="givenScreenings?.length < 6 ">
+  <div class="row">
+    <div class="col">
+      <section class="box-section-shadow box-light-background sub-section">
+
+        <header>
+           
+          <ng-template [ngIf]="givenScreenings?.length == 0"  [ngIfElse]="FromStream">           
+            <h3><span class="fas fa-square text-muted"></span> CV Screening</h3>
+            <hr>
+          </ng-template>
+          
+          <ng-template #FromStream>           
+              <h3><span class="fas fa-square text-muted"></span> {{lastScreening.nextScreeningType}} Screening</h3>
+              <hr>    
+          </ng-template>
+
+        </header>
+
+
+        <main>
+          <form [formGroup]="commentForm" (ngSubmit)="submitComment(commentForm.value)">
+            <div class="form-group">
+              <label for="phoneScreeningNotesTextArea" class="label-title">Comments</label>
+              <textarea formControlName="comment" class="form-control" id="phoneScreeningNotesTextArea" rows="6"></textarea>
+            </div>
+            <button type="reset" class="btn btn-outline-secondary btn-sm">Cancel</button>
+            <button type="submit" class="btn btn-success btn-sm float-right">Save</button>
+          </form>
+        </main>
+      </section>
+    </div>
+  </div>
+</div>

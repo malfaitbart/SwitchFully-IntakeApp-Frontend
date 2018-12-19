@@ -7,13 +7,16 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-- task: NodeTool@0
+- task: Npm@1
+  displayName: 'npm install'
   inputs:
-    versionSpec: '8.x'
-  displayName: 'Install Node.js'
+    workingDir: switchfully-intakeapp-frontend
+    verbose: false
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
+- task: Npm@1
+  displayName: 'npm build'
+  inputs:
+    command: custom
+    workingDir: switchfully-intakeapp-frontend
+    verbose: true
+    customCommand: 'run build'

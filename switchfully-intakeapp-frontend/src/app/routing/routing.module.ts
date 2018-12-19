@@ -14,28 +14,22 @@ import { CandidateDetailComponent } from '../features/candidates/candidate-detai
 
 
 import { JobapplicationOverviewComponent } from '../features/jobapplications/jobapplication-overview/jobapplication-overview.component';
-import { JobapplicationNewComponent } from '../features/jobapplications/jobapplication-new/jobapplication-new.component';
 import { JobapplicationDetailComponent } from '../features/jobapplications/jobapplication-detail/jobapplication-detail.component';
 import { FileUploadComponent } from '../features/jobapplications/file-upload/file-upload.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
   { path: "campaigns", component: CampaignsComponent, canActivate: [AuthGuard] },
   { path: "campaigndetail/:id", component: CampaignDetailComponent, canActivate: [AuthGuard] },
   { path: "campaignnew", component: CampaignNewComponent, canActivate: [AuthGuard] },
-
-  
-
   { path: 'candidates', component: CandidateOverviewComponent, canActivate: [AuthGuard] },
   { path: 'candidates/new', component: CandidateNewComponent, canActivate: [AuthGuard] },
   { path: 'candidates/:id', component: CandidateDetailComponent, canActivate: [AuthGuard] },
   { path: 'jobapplications', component: JobapplicationOverviewComponent, canActivate: [AuthGuard] },
-  { path: 'jobapplications/new', component: JobapplicationNewComponent, canActivate: [AuthGuard] },
   { path: 'jobapplications/:id', component: JobapplicationDetailComponent, canActivate: [AuthGuard] },
-  { path: 'upload', component: FileUploadComponent, canActivate: [AuthGuard] }
+  { path: '**', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard] },
 ]
 
 @NgModule({

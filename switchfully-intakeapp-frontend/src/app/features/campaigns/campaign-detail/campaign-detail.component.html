@@ -2,7 +2,7 @@
   <h2>Campaign Detail</h2>
 
   <div class="table-responsive detailPageTable " *ngIf="(campaign$ | async) as campaign else loading">
-      <table id="mytable" class="table table-bordred table-striped">
+      <table id="mytable" class="table table-bordred table-striped border">
         <!-- <tr>
           <th>Id: </th>
           <td>{{campaign.campaignId}}</td>
@@ -16,7 +16,7 @@
           <td>{{campaign.client}}</td>
         </tr>
         <tr>
-          <th>starDate: </th>
+          <th>StarDate: </th>
           <td>{{campaign.startDate | date: date}}</td>
         </tr>
         <tr>
@@ -24,7 +24,7 @@
           <td>{{campaign.endDate | date: date}}</td>
         </tr>        
         <tr>
-          <th>campaign Status: </th>
+          <th>Campaign Status: </th>
           <td>{{campaign.status}}</td>
         </tr>  
       </table> 

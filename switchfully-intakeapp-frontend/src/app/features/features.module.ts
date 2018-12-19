@@ -11,9 +11,9 @@ import { CandidateNewComponent } from './candidates/candidate-new/candidate-new.
 import { CandidateDetailComponent } from './candidates/candidate-detail/candidate-detail.component';
 import { JobapplicationOverviewComponent } from './jobapplications/jobapplication-overview/jobapplication-overview.component';
 import { JobapplicationDetailComponent } from './jobapplications/jobapplication-detail/jobapplication-detail.component';
-import { JobapplicationNewComponent } from './jobapplications/jobapplication-new/jobapplication-new.component';
 import { FileUploadComponent } from './jobapplications/file-upload/file-upload.component';
 import { RejectPopupComponent } from './jobapplications/reject-popup/reject-popup.component';
+import { ScreeningComponent } from './jobapplications/screening/screening.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +27,9 @@ import { RejectPopupComponent } from './jobapplications/reject-popup/reject-popu
     CandidateDetailComponent,
     JobapplicationOverviewComponent,
     JobapplicationDetailComponent,
-    JobapplicationNewComponent,
     FileUploadComponent,
     RejectPopupComponent,
+    ScreeningComponent,
   ],
   imports: [
     CoreModule,

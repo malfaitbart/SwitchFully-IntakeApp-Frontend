@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserAuth } from 'src/app/core/authentication/classes/userAuth';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/authentication/service/auth.service';
-import { LoggedOnUser } from 'src/app/core/User/classes/user';
+import { LoggedOnUser } from 'src/app/core/user/classes/user';
 import { UserService } from 'src/app/core/user/service/user.service';
 import { first } from 'rxjs/operators';
 

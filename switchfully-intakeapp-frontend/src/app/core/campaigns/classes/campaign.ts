@@ -1,3 +1,5 @@
+
+
 export class Campaign{
     campaignId: string;
     name: string;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { JobApplication } from 'src/app/core/jobapplications/classes/jobapplication';
 import { JobapplicationService } from 'src/app/core/jobapplications/jobapplication.service';
@@ -12,11 +12,13 @@ import { Location } from '@angular/common';
 })
 export class JobapplicationDetailComponent implements OnInit {
   jobapplication$: Observable<JobApplication>;
+  showDialog: boolean;
 
   constructor(
     private jobapplicationservice: JobapplicationService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -36,7 +38,6 @@ export class JobapplicationDetailComponent implements OnInit {
   }
 
   goBack(): void{
-    this.location.back();
-  }
-
+    this.router.navigate(['/jobapplications'])
+  } 
 }

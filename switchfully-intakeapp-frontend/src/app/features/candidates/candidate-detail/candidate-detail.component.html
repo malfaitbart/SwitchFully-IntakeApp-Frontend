@@ -3,10 +3,6 @@
 <div class="table-responsive detailPageTable" *ngIf="(candidate$ | async) as candidate else loading">
     <table id="mytable" class="table table-bordred table-striped  ">
       <tr>
-        <th>Id: </th>
-        <td>{{candidate.id}}</td>
-      </tr>
-      <tr>
         <th>FirstName: </th>
         <td>{{candidate.firstName}}</td>
       </tr>
@@ -30,7 +26,6 @@
         <th>Comment:</th>
         <td>{{candidate.comment}}</td>
       </tr>
-
     </table>
 
     <div id="addCampaign">
@@ -77,7 +72,7 @@
           </tr>
       </table>
     </form>
-    </div>
+  </div>
 </div>
 
 <ng-template #loading>

@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable, forkJoin } from 'rxjs';
-import { FormGroup, FormControl } from '@angular/forms';
 import { HttpClient, HttpRequest, HttpEventType } from '@angular/common/http';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { CandidateService } from 'src/app/core/candidates/candidate.service';
 import { Candidate } from 'src/app/core/candidates/classes/candidate';
@@ -27,7 +27,7 @@ export class CandidateDetailComponent implements OnInit {
   campaigns: Campaign[];
 
   newJobApplicationForm = new FormGroup({
-    campaignId: new FormControl(''),
+    campaignId: new FormControl('',[Validators.required]) ,
     candidateId: new FormControl(''),
     cv: new FormControl(null),
     motivation: new FormControl(null)
@@ -92,8 +92,13 @@ export class CandidateDetailComponent implements OnInit {
     return this.http.post('http://localhost:59089/api/Files', formData, { responseType: 'text' });
   }
 
+  createJobApplication(jobapplication: JobApplicationCreate): void {
+    this.jobapplicationservice.createJobApplication(jobapplication)
+      .subscribe( jobapp => this.router.navigate([`/jobapplications/${jobapp.id}`]));
+  }
+
   goBack(): void {
-    this.location.back();
+    this.router.navigate(['/candidates'])
   }
 
 }

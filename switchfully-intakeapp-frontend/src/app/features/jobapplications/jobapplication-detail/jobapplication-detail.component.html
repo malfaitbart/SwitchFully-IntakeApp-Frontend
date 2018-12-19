@@ -35,12 +35,20 @@
       <td>{{jobapplication.status.description}} <button (click)="showDialog = !showDialog;" class="float-right btn btn-danger btn-xs">reject!</button></td>
     </tr>
   </table>
+  
+  <app-reject-popup [visible]="showDialog"></app-reject-popup>
+  
+  <section name="selection-procedure-steps">
+    <app-screening></app-screening>
+  </section>
+
+ <div class="text-center backBtn">
+   <button class="btn btn-success" (click)="goBack()">go back</button>
+</div> 
+
 </div>
 
 <ng-template #loading>
   Loading...
 </ng-template>
-<button class="btn btn-success" (click)="goBack()">go back</button>
 
-
-<app-reject-popup [visible]="showDialog"></app-reject-popup>

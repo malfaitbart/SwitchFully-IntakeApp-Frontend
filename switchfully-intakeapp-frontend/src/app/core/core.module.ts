@@ -7,6 +7,7 @@ import { AuthGuard } from './authentication/guard/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JobapplicationService } from './jobapplications/jobapplication.service';
+import { ScreeningService } from './jobapplications/screening.service';
 
 
 
@@ -31,6 +32,7 @@ import { JobapplicationService } from './jobapplications/jobapplication.service'
     AuthService,
     AuthGuard,
     JobapplicationService,
+    ScreeningService,
   ]
 
 })

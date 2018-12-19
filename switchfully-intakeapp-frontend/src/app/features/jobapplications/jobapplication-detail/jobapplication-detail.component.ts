@@ -30,9 +30,9 @@ export class JobapplicationDetailComponent implements OnInit {
     this.jobapplication$ = this.jobapplicationservice.getById(id);
     console.log(this.jobapplication$);
   }
-
+  
   goBack(): void{
     this.router.navigate(['/jobapplications'])
   }
-
+ 
 }

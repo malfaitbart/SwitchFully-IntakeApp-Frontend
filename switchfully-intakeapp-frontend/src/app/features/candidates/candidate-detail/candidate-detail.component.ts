@@ -59,16 +59,6 @@ export class CandidateDetailComponent implements OnInit {
       .subscribe(campaigns => this.campaigns = campaigns)
   }
 
-  upload(files): Observable<any> {
-    const formData = new FormData();
-
-    for (let file of files) {
-      formData.append(file.name, file);
-    }
-
-    return this.http.post('http://localhost:59089/api/Files', formData, { responseType: 'text' });
-  }
-
   create(jobapplicationcreate: JobApplicationCreate, cv, motivation) {
     // forkJoin(this.upload(cv), this.upload(motivation))
     this.getDataFromTwoResources(cv, motivation)
@@ -87,11 +77,20 @@ export class CandidateDetailComponent implements OnInit {
   }
 
   getDataFromTwoResources(cv, motivation): Observable<any[]> {
-    // The URLs in this example are dummy
     let url1 = this.upload(cv);
     let url2 = this.upload(motivation);
     return forkJoin([url1, url2]);
-}
+  }
+
+  upload(files): Observable<any> {
+    const formData = new FormData();
+
+    for (let file of files) {
+      formData.append(file.name, file);
+    }
+
+    return this.http.post('http://localhost:59089/api/Files', formData, { responseType: 'text' });
+  }
 
   goBack(): void {
     this.location.back();

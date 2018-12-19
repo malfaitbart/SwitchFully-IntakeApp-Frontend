@@ -4,4 +4,5 @@ export class ApiUrl{
     static readonly urlCandidates = 'http://localhost:59089/api/Candidates/';
     static readonly urlJobApplications = 'http://localhost:59089/api/JobApplications/';
     static readonly urlJobApplicationsUpload = 'http://localhost:59089/api/JobApplications/Upload';
+    static readonly urlDownloadFile = 'http://localhost:59089/api/Files/';
 }

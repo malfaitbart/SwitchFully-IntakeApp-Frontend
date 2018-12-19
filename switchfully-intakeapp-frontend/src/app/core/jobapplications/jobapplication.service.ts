@@ -34,6 +34,21 @@ export class JobapplicationService {
       );
   }
 
+  getDocument(targeturl, docName) {
+    this.http.get(targeturl, { responseType: 'blob' as 'json' }).subscribe(
+      (response: any) => {
+        let dataType = response.type;
+        let binaryData = [];
+        binaryData.push(response);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+        document.body.appendChild(downloadLink);
+        downloadLink.download = docName;
+        downloadLink.click();
+      }
+    );
+  }
+
   createJobApplication(jobapplication: JobApplicationCreate): Observable<JobApplication> {
     return this.http.post<JobApplication>(ApiUrl.urlJobApplications, jobapplication, httpOptions).pipe(
       tap(() => console.log('jobapplication added'))

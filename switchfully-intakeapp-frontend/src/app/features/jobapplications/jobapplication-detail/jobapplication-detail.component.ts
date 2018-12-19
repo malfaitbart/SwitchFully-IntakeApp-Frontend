@@ -29,6 +29,12 @@ export class JobapplicationDetailComponent implements OnInit {
     console.log(this.jobapplication$);
   }
 
+  getDocument(event, docName){
+    event.preventDefault();
+    console.log(event.target.href);
+    this.jobapplicationservice.getDocument(event.target.href, docName);
+  }
+
   goBack(): void{
     this.location.back();
   }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
-import { FileUploadWithData } from 'src/app/core/jobapplications/classes/file';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ApiUrl } from 'src/app/core/apiUrl/apiUrl';
 
@@ -12,8 +11,6 @@ import { ApiUrl } from 'src/app/core/apiUrl/apiUrl';
 export class FileUploadComponent implements OnInit {
   public progress: number;
   public message: string;
-
-  fileupload: FileUploadWithData;
 
   newUploadForm = new FormGroup({
     data: new FormControl(''),

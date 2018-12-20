@@ -3,21 +3,39 @@
 <form [formGroup]="newCampaignForm" (ngSubmit)="createCampaign(newCampaignForm.value)">
   <table id="mytable" class="table table-bordred table-striped">
     <tr>
-
       <th><label for="InputName">Name:</label></th>
-      <td><input type="text" formControlName="name" class="form-control" placeholder="The campaign name"></td>
+      <td>
+        <input type="text" formControlName="name" class="form-control" placeholder="The campaign name">
+        <p *ngIf="error.campIsError" class="alert alert-danger">
+          {{ error.campErrorMessage }}
+        </p>
+      </td>
     </tr>
     <tr>
       <th><label for="InputClient">Client:</label></th>
-      <td><input type="text" formControlName="client" class="form-control" placeholder="the client name"></td>
+      <td>
+        <input type="text" formControlName="client" class="form-control" placeholder="the client name">
+        <p *ngIf="error.clientIsError" class="alert alert-danger">
+          {{ error.clientErrorMessage }}
+        </p>
+      </td>
     </tr>
     <tr>
       <th><label for="InputStartDate">StartDate:</label></th>
-      <td><input type="date" formControlName="startDate" class="form-control"></td>
+      <td><input type="date" formControlName="startDate" class="form-control">
+        <p *ngIf="error.beforeDateIsError" class="alert alert-danger">
+          {{ error.beforeDateErrorMessage }}
+        </p>
+      </td>
     </tr>
     <tr>
       <th><label for="InputEndDate">EndDate:</label></th>
-      <td><input type="date" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" formControlName="endDate" class="form-control"></td>
+      <td><input type="date" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" formControlName="endDate"
+          class="form-control">
+        <p *ngIf="error.endDateIsError" class="alert alert-danger">
+          {{ error.endDateErrorMessage }}
+        </p>
+      </td>
     </tr>
     <tr>
 
@@ -28,7 +46,4 @@
     </tr>
 
   </table>
-  <div *ngIf="error.isError" class="alert alert-danger">
-    {{ error.errorMessage }}
-  </div>
 </form>

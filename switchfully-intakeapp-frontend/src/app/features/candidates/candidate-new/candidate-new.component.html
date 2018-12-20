@@ -5,19 +5,31 @@
     <table id="mytable" class="table table-bordred table-striped">
       <tr>
         <th><label for="firstName">FirstName: </label></th>
-        <td><input type="text" formControlName="firstName" class="form-control" placeholder="Firstname"></td>
+        <td><input type="text" formControlName="firstName" class="form-control" placeholder="Firstname">
+          <p *ngIf="error.firstNameIsError" class="alert alert-danger">
+              {{ error.firsNameErrorMessage }}
+            </p></td>
       </tr>
       <tr>
         <th><label for="lastName">LastName: </label></th>
-        <td><input type="text" formControlName="lastName" class="form-control" placeholder="Lastname"></td>
+        <td><input type="text" formControlName="lastName" class="form-control" placeholder="Lastname">
+          <p *ngIf="error.lastNameIsError" class="alert alert-danger">
+              {{ error.lastNameErrorMessage }}
+            </p></td>
       </tr>
       <tr>
         <th><label for="email">Email: </label></th>
-        <td><input type="email" formControlName="email" class="form-control" placeholder="email@intakeApp.com"></td>
+        <td><input type="email" formControlName="email" class="form-control" placeholder="email@intakeApp.com">
+          <p *ngIf="error.emailIsError" class="alert alert-danger">
+              {{ error.emailErrorMessage }}
+            </p></td>
       </tr>
       <tr>
         <th><label for="phone">Phone: </label></th>
-        <td><input type="phone" formControlName="phone" class="form-control" placeholder="01234567889"></td>
+        <td><input type="phone" formControlName="phone" class="form-control" placeholder="01234567889">
+          <p *ngIf="error.phoneIsError" class="alert alert-danger">
+              {{ error.phoneErrorMessage }}
+            </p></td>
       </tr>
       <tr>
         <th><label for="linkedin">LinkedIn: </label></th>
@@ -25,7 +37,10 @@
       </tr>
       <tr>
         <th><label for="comment">Comment: </label></th>
-        <td><input type="comment" formControlName="comment" class="form-control" placeholder="comment"></td>
+        <td><input type="comment" formControlName="comment" class="form-control" placeholder="comment">
+          <p *ngIf="error.commentIsError" class="alert alert-danger">
+              {{ error.commentErrorMessage }}
+            </p></td>
       </tr>
 
 
@@ -36,8 +51,8 @@
         </td>
       </tr>
     </table>
-    <div *ngIf="error.isError" class="alert alert-danger">
+    <p *ngIf="error.isError" class="alert alert-danger">
       {{ error.errorMessage }}
-    </div>
+    </p>
   </form>
 </div>

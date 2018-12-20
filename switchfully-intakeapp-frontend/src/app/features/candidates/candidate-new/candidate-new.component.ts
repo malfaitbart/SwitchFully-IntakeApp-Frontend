@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Candidate } from 'src/app/core/candidates/classes/candidate';
 import { CandidateService } from 'src/app/core/candidates/candidate.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-candidate-new',
@@ -10,7 +10,9 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./candidate-new.component.css']
 })
 export class CandidateNewComponent implements OnInit {
-  error:any={isError:false,errorMessage:''};
+  error: any = { firstNameIsError: false, lastNameIsError: false, commentIsError: false, phoneIsError: false,
+    emailIsError: false,  firsNameErrorMessage: '', lastNameErrorMessage : '',
+     commentErrorMessage: '', emailErrorMessage: '', phoneErrorMessage: '' };
 
   newCandidateForm = new FormGroup({
     firstName: new FormControl(''),
@@ -31,8 +33,8 @@ export class CandidateNewComponent implements OnInit {
 
   createCandidate(candidate: Candidate): void {
     this.formValidation(candidate)
-    if(this.error.isError)
-    {return}
+    if (this.error.firstNameIsError || this.error.lastNameIsError || 
+      this.error.commentIsError || this.error.emailIsError || this.error.phoneIsError) { return }
     this.candidateService.createCandidate(candidate)
       .subscribe(() => this.router.navigate(['/candidates']));
 
@@ -40,21 +42,44 @@ export class CandidateNewComponent implements OnInit {
 
 
 
-  formValidation(candidate: Candidate){
-    this.error={isError:false,errorMessage:''};
+  formValidation(candidate: Candidate) {
+    this.error = { firstNameIsError: false, lastNameIsError: false, commentIsError: false, phoneIsError: false,
+      emailIsError: false,  firsNameErrorMessage: '', lastNameErrorMessage : '',
+       commentErrorMessage: '', emailErrorMessage: '', phoneErrorMessage: ''  };
 
     //input
-    if( candidate.firstName === null || candidate.firstName.match(/^ *$/) ){
-      this.error={isError:true,errorMessage:`firstName is requierd`};
+    if (candidate.firstName.length > 100) {
+      this.error = { firstNameIsError: true, firsNameErrorMessage: `firstname can be max 100 character long` }
       return;
     }
-    if( candidate.lastName === null || candidate.lastName.match(/^ *$/) ){
-      this.error={isError:true,errorMessage:`lastName is requierd`};
+    if (candidate.lastName.length > 100) {
+      this.error = { lastNameIsError: true, lastNameErrorMessage: `lastname can be max 100 character long` }
       return;
     }
-    if( candidate.email === null || !candidate.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]*$/)){
+    if (candidate.comment.length > 400) {
+      this.error = { commentIsError: true, commentErrorMessage: `firstname can be max 400 character long` }
+      return;
+    }
+    if (candidate.firstName === null || candidate.firstName.match(/^ *$/)) {
+      this.error = { firstNameIsError: true, firsNameErrorMessage: `firstName is required` };
+      return;
+    }
+    if (candidate.lastName === null || candidate.lastName.match(/^ *$/)) {
+      this.error = { lastNameIsError: true, lastNameErrorMessage: `lastName is required` };
+      return;
+    }
+    if (candidate.email === null || candidate.email.match(/^ *$/)) {
+      this.error = { emailIsError: true, emailErrorMessage: `email is required` };
+      return;
+    }
+    if (candidate.email === null || !candidate.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]*$/)) {
       console.log(candidate.email)
-      this.error={isError:true,errorMessage:`email is requierd in the folowing format(abcde@fgh.ijk)`};
+      this.error = { emailIsError: true, emailErrorMessage: `email is required in the folowing format(abc@abc.com)` };
+      return;
+    }
+    if (candidate.phone === null || !candidate.phone.match(/^[0-9+]*$/)) {
+      console.log(candidate.phone)
+      this.error = { phoneIsError: true, phoneErrorMessage: `only numbers and + is allowed` };
       return;
     }
 

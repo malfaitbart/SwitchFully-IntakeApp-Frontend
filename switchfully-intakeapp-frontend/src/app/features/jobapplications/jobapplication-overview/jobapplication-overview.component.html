@@ -16,7 +16,9 @@
         <span [ngClass]="{
           'badge badge-success':jobapplicationoverview.status === 'Active',
           'badge badge-danger':jobapplicationoverview.status === 'Rejected'
-        }">{{jobapplicationoverview.status}}</span>
+        }">
+          {{jobapplicationoverview.status}}
+        </span>
       </td>
       <td>
         <span class="badge badge-secondary">{{jobapplicationoverview.selectionStep}}</span></td>

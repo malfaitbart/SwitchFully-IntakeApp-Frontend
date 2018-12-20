@@ -10,17 +10,21 @@ import { Observable } from 'rxjs';
 })
 export class CampaignsComponent implements OnInit {
   
-campaigns: Campaign[];
 campaigns$ : Observable<Campaign[]>;
+campaignsFromStream$ : Observable<Campaign[]>;
 
   constructor(private campaignService: CampaignService) { }
 
   ngOnInit() {
     this.getAllCampaigns();
+    this.seachByElement("");
   }
 
   getAllCampaigns(){
-    this.campaigns$ = this.campaignService.getCampaigns()
+    this.campaignsFromStream$ = this.campaignService.getCampaigns()
   }
 
+  seachByElement(givenSearchTerm) {
+   this.campaigns$ = this.campaignService.searchItemOnGivenElement(givenSearchTerm,this.campaignsFromStream$);
+  }
 }

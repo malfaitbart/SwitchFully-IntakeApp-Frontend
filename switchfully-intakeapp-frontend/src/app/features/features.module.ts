@@ -13,6 +13,7 @@ import { JobapplicationOverviewComponent } from './jobapplications/jobapplicatio
 import { JobapplicationDetailComponent } from './jobapplications/jobapplication-detail/jobapplication-detail.component';
 import { RejectPopupComponent } from './jobapplications/reject-popup/reject-popup.component';
 import { ScreeningComponent } from './jobapplications/screening/screening.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ScreeningComponent } from './jobapplications/screening/screening.compon
   ],
   imports: [
     CoreModule,
-    RoutingModule
+    RoutingModule,
+    SharedModule
   ]
 })
 export class FeaturesModule { }

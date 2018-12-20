@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class CampaignNewComponent implements OnInit {
 
-  error:any={isError:false,errorMessage:''};
+  error:any={ endDateIsError: false, beforeDateIsError : false,  campIsError:false, 
+    clientIsError : false, clientErrorMessage:'', campErrorMessage: '',endDateErrorMessage: '', beforeDateErrorMessage: ''};
 
   constructor(private campaignService: CampaignService, private router: Router) { }
 
@@ -28,7 +29,7 @@ export class CampaignNewComponent implements OnInit {
 
   createCampaign(newCampaign: Campaign): void {
     this.formValidation(newCampaign)
-    if(this.error.isError)
+    if(this.error.clientIsError || this.error.campIsError || this.error.endDateIsError || this.error.beforeDateIsError)
     {return}
     this.campaignService.createCampaign(newCampaign)
       .subscribe(() => this.router.navigate(['/campaigns']));   
@@ -37,29 +38,34 @@ export class CampaignNewComponent implements OnInit {
   
   
   formValidation(newCampaign: Campaign){    
-    this.error={isError:false,errorMessage:''};
+    this.error={endDateIsError: false, beforeDateIsError : false, campIsError:false, clientIsError:false, clientErrorMessage:'', campErrorMessage: '',
+    endDateErrorMessage: '', beforeDateErrorMessage: '' };
   
     //input
+    if (newCampaign.name.length > 100) {
+      this.error = { campIsError: true, campErrorMessage: `Campaign name can be max 100 character long` }
+      return ;
+    }
+    if (newCampaign.client.length > 100) {
+      this.error = { clientIsError: true, clientErrorMessage: `Client name can be max 100 character long` }
+      return;
+    }
     if( newCampaign.name === null || newCampaign.name.match(/^ *$/) ){
-      this.error={isError:true,errorMessage:`Campaign name is requierd`};
+      this.error={campIsError:true,campErrorMessage:`Campaign name is required`};
       return;
     } 
       if( newCampaign.client === null || newCampaign.client.match(/^ *$/) ){
-      this.error={isError:true,errorMessage:`Client name is requierd`};
+      this.error={clientIsError:true,clientErrorMessage:`Client name is required`};
       return;
     } 
 
     //dateChecks
     if( new Date(newCampaign.startDate) < new Date(Date.now()) ){
-      this.error={isError:true,errorMessage:`startDate can't be in the past`};
+      this.error={beforeDateIsError:true,beforeDateErrorMessage:`startDate can't be in the past`};
       return;
     }
-    if( new Date(newCampaign.endDate) == new Date(newCampaign.startDate) ){
-      this.error={isError:true,errorMessage:`End Date can't be on the same date as the start date`};
-      return;
-    }   
-    if( new Date(newCampaign.endDate) < new Date(newCampaign.startDate) ){
-      this.error={isError:true,errorMessage:`End Date can't before start date`};
+    if( new Date(newCampaign.endDate) <= new Date(newCampaign.startDate) ){
+      this.error={endDateIsError:true,endDateErrorMessage:`End Date can't be before start date or be the same as the startDate`};
       return;
     }  
   }

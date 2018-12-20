@@ -6,21 +6,20 @@
       <th>Candidate name</th>
       <th>Campaign name</th>
       <th>Status</th>
-      <!-- <th></th> -->
+      <th>Selection step</th>
     </thead>
-    <tr *ngFor="let jobapplication of jobapplications">
-      <th><a routerLink="/jobapplications/{{jobapplication.id}}">{{jobapplication.id}}</a></th>
-      <td>{{jobapplication.candidate.lastName}} {{jobapplication.candidate.firstName}}</td>
-      <td>{{jobapplication.campaign.name}}</td>
-      <td [ngClass]="{
-        'badge badge-success':jobapplication.status.description === 'Active',
-        'badge badge-danger':jobapplication.status.description === 'Rejected'
-      }">
-        {{jobapplication.status.description}}
+    <tr *ngFor="let jobapplicationoverview of jobapplications">
+      <th><a routerLink="/jobapplications/{{jobapplicationoverview.id}}">{{jobapplicationoverview.id}}</a></th>
+      <td>{{jobapplicationoverview.candidate}}</td>
+      <td>{{jobapplicationoverview.campaign}}</td>
+      <td>
+        <span [ngClass]="{
+          'badge badge-success':jobapplicationoverview.status === 'Active',
+          'badge badge-danger':jobapplicationoverview.status === 'Rejected'
+        }">{{jobapplicationoverview.status}}</span>
       </td>
-      <!-- <td class="DetailBtnTdWidth">
-        <button class="btn btn-success" routerLink="/jobapplications/{{jobapplication.id}}">Detail</button>
-      </td> -->
+      <td>
+        <span class="badge badge-secondary">{{jobapplicationoverview.selectionStep}}</span></td>
     </tr>
     </table>
 </div>

@@ -1,6 +1,8 @@
 body {
   background: #72a71f;
   background-image: linear-gradient(to right bottom, #72a71f, #5e8a1a, #4b6f15, #395410, #283b0b);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 #main-content {

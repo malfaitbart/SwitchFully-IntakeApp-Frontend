@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { JobapplicationService } from 'src/app/core/jobapplications/jobapplication.service';
 
 import { JobApplication } from 'src/app/core/jobapplications/classes/jobapplication';
+import { JobApplicationOverview } from 'src/app/core/jobapplications/classes/jobapplicationoverview';
 
 @Component({
   selector: 'app-jobapplication-overview',
@@ -11,7 +12,7 @@ import { JobApplication } from 'src/app/core/jobapplications/classes/jobapplicat
 })
 export class JobapplicationOverviewComponent implements OnInit {
 
-  jobapplications: JobApplication[];
+  jobapplications: JobApplicationOverview[];
 
   constructor(
     private jobapplicationservice: JobapplicationService,

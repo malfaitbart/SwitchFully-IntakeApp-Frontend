@@ -6,6 +6,7 @@ import { ApiUrl } from '../apiUrl/apiUrl';
 
 import { tap, catchError, map } from 'rxjs/operators';
 import { JobApplicationCreate } from './classes/jobapplicationCreate';
+import { JobApplicationOverview } from './classes/jobapplicationoverview';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,8 +21,8 @@ export class JobapplicationService {
     private http: HttpClient
   ) { }
 
-  getJobApplications(): Observable<JobApplication[]> {
-    return this.http.get<JobApplication[]>(ApiUrl.urlJobApplications).pipe(
+  getJobApplications(): Observable<JobApplicationOverview[]> {
+    return this.http.get<JobApplicationOverview[]>(ApiUrl.urlJobApplications).pipe(
       tap(jp => { console.log('fetched all jobapplications') }),
       catchError(this.handleError)
     );

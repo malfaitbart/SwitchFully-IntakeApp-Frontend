@@ -32,8 +32,11 @@
             </p></td>
       </tr>
       <tr>
-        <th><label for="linkedin">LinkedIn: </label></th>
-        <td><input type="linkedin" formControlName="linkedin" class="form-control" placeholder="www.WhereToGo.com"></td>
+        <th><label for="linkedIn">LinkedIn: </label></th>
+        <td><input type="linkedIn" formControlName="linkedIn" class="form-control" placeholder="www.WhereToGo.com">
+          <p *ngIf="error.linkedInIsError" class="alert alert-danger">
+              {{ error.linkedInErrorMessage }}
+            </p></td>
       </tr>
       <tr>
         <th><label for="comment">Comment: </label></th>
@@ -51,8 +54,5 @@
         </td>
       </tr>
     </table>
-    <p *ngIf="error.isError" class="alert alert-danger">
-      {{ error.errorMessage }}
-    </p>
   </form>
 </div>

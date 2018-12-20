@@ -10,16 +10,18 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./candidate-new.component.css']
 })
 export class CandidateNewComponent implements OnInit {
-  error: any = { firstNameIsError: false, lastNameIsError: false, commentIsError: false, phoneIsError: false,
-    emailIsError: false,  firsNameErrorMessage: '', lastNameErrorMessage : '',
-     commentErrorMessage: '', emailErrorMessage: '', phoneErrorMessage: '' };
+  error: any = {
+    firstNameIsError: false, lastNameIsError: false, commentIsError: false, phoneIsError: false, linkedInIsError: false,
+    emailIsError: false, firsNameErrorMessage: '', lastNameErrorMessage: '',
+    commentErrorMessage: '', emailErrorMessage: '', phoneErrorMessage: '', linkedInErrorMessage: ''
+  };
 
   newCandidateForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl(''),
     phone: new FormControl(''),
-    linkedin: new FormControl(''),
+    linkedIn: new FormControl(''),
     comment: new FormControl('')
   })
 
@@ -33,8 +35,8 @@ export class CandidateNewComponent implements OnInit {
 
   createCandidate(candidate: Candidate): void {
     this.formValidation(candidate)
-    if (this.error.firstNameIsError || this.error.lastNameIsError || 
-      this.error.commentIsError || this.error.emailIsError || this.error.phoneIsError) { return }
+    if (this.error.firstNameIsError || this.error.lastNameIsError ||
+      this.error.commentIsError || this.error.emailIsError || this.error.phoneIsError || this.error.linkedInIsError) { return }
     this.candidateService.createCandidate(candidate)
       .subscribe(() => this.router.navigate(['/candidates']));
 
@@ -43,9 +45,11 @@ export class CandidateNewComponent implements OnInit {
 
 
   formValidation(candidate: Candidate) {
-    this.error = { firstNameIsError: false, lastNameIsError: false, commentIsError: false, phoneIsError: false,
-      emailIsError: false,  firsNameErrorMessage: '', lastNameErrorMessage : '',
-       commentErrorMessage: '', emailErrorMessage: '', phoneErrorMessage: ''  };
+    this.error = {
+      firstNameIsError: false, lastNameIsError: false, commentIsError: false, phoneIsError: false, linkedInIsError: false,
+      emailIsError: false, firsNameErrorMessage: '', lastNameErrorMessage: '',
+      commentErrorMessage: '', emailErrorMessage: '', phoneErrorMessage: '', linkedInErrorMessage: ''
+    };
 
     //input
     if (candidate.firstName.length > 100) {
@@ -81,8 +85,13 @@ export class CandidateNewComponent implements OnInit {
       console.log(candidate.phone)
       this.error = { phoneIsError: true, phoneErrorMessage: `only numbers and + is allowed` };
       return;
+    }    
+    if (candidate.linkedIn === null || !candidate.linkedIn.match(/^(www)+\.[a-zA-Z0-9]+\.[a-z.]*$/)) {
+      console.log(candidate.linkedIn)
+      this.error = { linkedInIsError: true, linkedInErrorMessage: `use www to form a correct URL (www.abcd.com)` };
+      return;
+
     }
 
   }
-
 }

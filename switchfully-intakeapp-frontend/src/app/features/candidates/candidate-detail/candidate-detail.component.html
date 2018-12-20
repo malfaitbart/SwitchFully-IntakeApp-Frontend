@@ -1,81 +1,108 @@
-<h2>Candidate Detail</h2>
-
-<div class="table-responsive detailPageTable" *ngIf="(candidate$ | async) as candidate else loading">
-    <table id="mytable" class="table table-bordred table-striped  ">
-      <tr>
-        <th>FirstName: </th>
-        <td>{{candidate.firstName}}</td>
-      </tr>
-      <tr>
-        <th>LastName: </th>
-        <td>{{candidate.lastName}}</td>
-      </tr>
-      <tr>
-        <th>Email:</th>
-        <td><a href="mailto:{{candidate.email}}">{{candidate.email}}</a></td>
-      </tr>
-      <tr>
-        <th>Phone:</th>
-        <td>{{candidate.phone}}</td>
-      </tr>
-      <tr>
-        <th>LinkedIn:</th>
-        <td><a href="http://{{candidate.linkedIn}}" target="_blank">{{candidate.linkedIn}}</a></td>
-      </tr>
-      <tr>
-        <th>Comment:</th>
-        <td>{{candidate.comment}}</td>
-      </tr>
-    </table>
-
-    <div id="addCampaign">
-      <h5>Add candidate to campaign</h5>
-      <form [formGroup]="newJobApplicationForm" (ngSubmit)="create(newJobApplicationForm.value, cv.files, motivation.files)">
-      <table>
-        <tr>
-          <th colspan="3">
-            Please select the campaign and add your CV and motivationletter
-          </th>
-        </tr>
-        <tr>
-          <td>
-              Select campaign to apply for:
-          </td>
-          <td>
-            <select formControlName="campaignId" id="campaignId" required>
-              <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
-              <option *ngFor="let campaign of campaigns" [value]="campaign.campaignId">
-                {{campaign.name}}
-              </option>
-            </select>
-          </td>
-          <td rowspan="3">
-              <input type="hidden" formControlName="candidateId" [ngModel]="candidateId">
-              <button class="btn btn-success" id="item" type="submit">New JobApplication</button>
-            </td>
-        </tr>
-        <tr>
-          <td>
-              Curiculum Vitea:
-          </td>
-          <td>
-            <input #cv type="file" class="form-control" name="cv" /><br />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Motivation letter:
-          </td>
-          <td>
-            <input #motivation type="file" class="form-control" name="motivation" />
-          </td>
+<div class="table-responsive ">
+  <h2>Candidate Detail <small class="sub-title badge badge-dark">{{candidate.id}}</small></h2>
+  <hr>
+  <div class="table-responsive detailPageTable" *ngIf="(candidate$ | async) as candidate else loading">
+    <section class="candidate-readonly">
+      <header>
+        <h3>{{candidate.firstName}} {{candidate.lastName}}</h3>
+        <hr>
+      </header>
+      <main>
+        <table>
+          <tr>
+            <th>FirstName: </th>
+            <td>{{candidate.firstName}}</td>
           </tr>
-      </table>
-    </form>
-  </div>
-</div>
+          <tr>
+            <th>LastName: </th>
+            <td>{{candidate.lastName}}</td>
+          </tr>
+          <tr>
+            <th>Email:</th>
+            <td><a href="mailto:{{candidate.email}}">{{candidate.email}}</a></td>
+          </tr>
+          <tr>
+            <th>Phone:</th>
+            <td>{{candidate.phone}}</td>
+          </tr>
+          <tr>
+            <th>LinkedIn:</th>
+            <td><a href="http://{{candidate.linkedIn}}" target="_blank">{{candidate.linkedIn}}</a></td>
+          </tr>
+          <tr>
+            <th>Comment:</th>
+            <td>{{candidate.comment}}</td>
+          </tr>
+        </table>
+      </main>
+    </section>
+    <hr>
+    <div id="addCampaign">
+      <section class="candidate-readonly">
+        <header>
+          <h3>Add candidate to campaign</h3>
+          <hr>
+        </header>
+        <main>
+          <form [formGroup]="newJobApplicationForm" (ngSubmit)="create(newJobApplicationForm.value, cv.files, motivation.files)">
+            <table>
+              <tr>
+                <th>
+                  Select campaign to apply for:
+                </th>
+                <td>
+                  <select formControlName="campaignId" id="campaignId" required class="custom-select">
+                    <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
+                    <option *ngFor="let campaign of campaigns" [value]="campaign.campaignId">
+                      {{campaign.name}}
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Curiculum Vitea:
+                </th>
+                <td>
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input #cv type="file" class="custom-file-input">
+                      <label class="custom-file-label">Choose CV</label>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Motivation letter:
+                </th>
+                <td>
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input #motivation type="file" class="custom-file-input">
+                      <label class="custom-file-label">Choose motivation letter</label>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <input type="hidden" formControlName="candidateId" [ngModel]="candidateId">
+                  <button class="btn btn-success" id="item" type="submit">Create Job Application</button>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </main>
+      </section>
+    </div>
 
-<ng-template #loading>
-  Loading...
-</ng-template>
-<button class="btn btn-success" (click)="goBack()">go back</button>
+  </div>
+
+  <ng-template #loading>
+    Loading...
+  </ng-template>
+  <br />
+  <button class="btn btn-success" (click)="goBack()">go back</button>
+
+</div>

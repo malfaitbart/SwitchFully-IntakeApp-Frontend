@@ -6,14 +6,12 @@
 <div>
   <table id="mytable" class="table table-bordred table-striped border">
     <thead class="thead-green">
-      <th>Id</th>
       <th>FirstName</th>
       <th>LastName</th>
       <th>Email</th>
     </thead>
     <tr *ngFor="let candidate of candidates">
-      <th><a routerLink="/candidates/{{candidate.id}}">{{candidate.id}}</a></th>
-      <td>{{candidate.firstName}}</td>
+      <th><a routerLink="/candidates/{{candidate.id}}">{{candidate.firstName}}</a></th>
       <td>{{candidate.lastName}}</td>
       <td>{{candidate.email}}</td>
     </tr>

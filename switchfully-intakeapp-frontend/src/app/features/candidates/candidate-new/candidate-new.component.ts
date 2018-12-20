@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Candidate } from 'src/app/core/candidates/classes/candidate';
 import { CandidateService } from 'src/app/core/candidates/candidate.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-candidate-new',
@@ -13,12 +13,12 @@ export class CandidateNewComponent implements OnInit {
   error:any={isError:false,errorMessage:''};
 
   newCandidateForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-    phone: new FormControl(''),
-    linkedin: new FormControl(''),
-    comment: new FormControl('')
+    firstName: new FormControl('', Validators.maxLength(200)),
+    lastName: new FormControl('', Validators.maxLength(200)),
+    email: new FormControl('', [Validators.maxLength(200), Validators.email]),
+    phone: new FormControl('', [Validators.maxLength(200), Validators.pattern("^[0-9]*$")]),
+    linkedin: new FormControl('', Validators.maxLength(200)),
+    comment: new FormControl('', Validators.maxLength(600))
   })
 
   constructor(

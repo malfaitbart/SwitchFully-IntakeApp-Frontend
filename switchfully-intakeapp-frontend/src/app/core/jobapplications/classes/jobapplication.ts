@@ -8,6 +8,7 @@ export class JobApplication{
   candidate: Candidate;
   campaign: Campaign;
   status: Status;
+  selectionStep: string;
   cv: FileInfo;
   motivation: FileInfo;
 }

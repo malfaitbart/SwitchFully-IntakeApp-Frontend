@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./campaigns-overview.component.css']
 })
 export class CampaignsComponent implements OnInit {
-  
+
 campaigns: Campaign[];
 campaigns$ : Observable<Campaign[]>;
 
@@ -23,4 +23,10 @@ campaigns$ : Observable<Campaign[]>;
     this.campaigns$ = this.campaignService.getCampaigns()
   }
 
+  convertToStatusLabel(status: boolean){
+    if(status){
+      return 'Active';
+    }
+    return 'Not Active';
+  }
 }

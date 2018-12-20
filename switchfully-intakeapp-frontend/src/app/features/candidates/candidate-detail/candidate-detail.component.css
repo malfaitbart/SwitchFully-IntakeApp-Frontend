@@ -1,14 +1,20 @@
 #addCampaign{
     text-align: center;
 }
-#addCampaign #item{
-    margin: 2em;
-    padding: 0.4em;
-}
+
 #addCampaign h5{
     margin-top: 2.5em;
     margin-bottom: -0.5em;
 }
+
+#addCampaign th{
+  text-align: center;
+}
+
+#addCampaign td{
+  text-align: left;
+}
+
 #addCampaign button{
     width: 12em;
 }

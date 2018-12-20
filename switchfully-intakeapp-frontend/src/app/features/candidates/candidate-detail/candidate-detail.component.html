@@ -1,12 +1,7 @@
 <h2>Candidate Detail</h2>
 
-<div class="table-responsive detailPageTable  " *ngIf="(candidate$ | async) as candidate else loading">
-  <form [formGroup]="newJobApplicationForm" (ngSubmit)="createJobApplication(newJobApplicationForm.value)">
-    <table id="mytable" class="table table-bordred table-striped border">
-      <!-- <tr>
-        <th>Id: </th>
-        <td>{{candidate.id}}</td>
-      </tr> -->
+<div class="table-responsive detailPageTable" *ngIf="(candidate$ | async) as candidate else loading">
+    <table id="mytable" class="table table-bordred table-striped  ">
       <tr>
         <th>FirstName: </th>
         <td>{{candidate.firstName}}</td>
@@ -31,23 +26,53 @@
         <th>Comment:</th>
         <td>{{candidate.comment}}</td>
       </tr>
-
     </table>
 
     <div id="addCampaign">
-       
       <h5>Add candidate to campaign</h5>
-      <select formControlName="campaignId" id="item">
-        <option disabled hidden [value]="">-- select --</option>
-        <option *ngFor="let campaign of campaigns" [value]="campaign.campaignId">
-          {{campaign.name}}
-        </option>
-      </select>
-     
-      <input type="hidden" formControlName="candidateId" [ngModel]="candidateId">
-      <button class="btn btn-success" id="item" type="submit">New JobApplication</button>
-    </div>
-  </form>
+      <form [formGroup]="newJobApplicationForm" (ngSubmit)="create(newJobApplicationForm.value, cv.files, motivation.files)">
+      <table>
+        <tr>
+          <th colspan="3">
+            Please select the campaign and add your CV and motivationletter
+          </th>
+        </tr>
+        <tr>
+          <td>
+              Select campaign to apply for:
+          </td>
+          <td>
+            <select formControlName="campaignId" id="campaignId" required>
+              <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
+              <option *ngFor="let campaign of campaigns" [value]="campaign.campaignId">
+                {{campaign.name}}
+              </option>
+            </select>
+          </td>
+          <td rowspan="3">
+              <input type="hidden" formControlName="candidateId" [ngModel]="candidateId">
+              <button class="btn btn-success" id="item" type="submit">New JobApplication</button>
+            </td>
+        </tr>
+        <tr>
+          <td>
+              Curiculum Vitea:
+          </td>
+          <td>
+            <input #cv type="file" class="form-control" name="cv" /><br />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Motivation letter:
+          </td>
+          <td>
+            <input #motivation type="file" class="form-control" name="motivation" />
+          </td>
+          </tr>
+      </table>
+    </form>
+  </div>
 </div>
 
 <ng-template #loading>

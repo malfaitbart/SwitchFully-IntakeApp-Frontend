@@ -1,4 +1,3 @@
-
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark box-header-border box-header-shadow" *ngIf="currentUserToken">
   <div class="container">
     <a class="navbar-brand LogoHomeBtn" routerLink="/home">Switch<span class="text-green">fully</span></a>
@@ -14,7 +13,6 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="campaigns">Campaigns</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" routerLink="jobapplications">JobApplications</a>
         </li>
@@ -23,8 +21,9 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <span class="fas fa-user"></span> <span class="label-title">Signed-in as:</span> <strong>
-              {{CurrentUserName()}}</strong>
+            <span class="fas fa-user"> </span>&nbsp;
+            <span class="label-title">Signed-in as: </span>
+            <strong>{{CurrentUserName()}}</strong>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#" (click)="logout()">Sign-out</a>

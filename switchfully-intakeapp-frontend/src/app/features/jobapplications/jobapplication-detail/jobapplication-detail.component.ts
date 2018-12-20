@@ -30,9 +30,14 @@ export class JobapplicationDetailComponent implements OnInit {
     this.jobapplication$ = this.jobapplicationservice.getById(id);
     console.log(this.jobapplication$);
   }
-  
+
+  getDocument(event, docName){
+    event.preventDefault();
+    console.log(event.target.href);
+    this.jobapplicationservice.getDocument(event.target.href, docName);
+  }
+
   goBack(): void{
     this.router.navigate(['/jobapplications'])
-  }
- 
+  } 
 }

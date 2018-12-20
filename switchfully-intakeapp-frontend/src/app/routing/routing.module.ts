@@ -15,6 +15,8 @@ import { CandidateDetailComponent } from '../features/candidates/candidate-detai
 
 import { JobapplicationOverviewComponent } from '../features/jobapplications/jobapplication-overview/jobapplication-overview.component';
 import { JobapplicationDetailComponent } from '../features/jobapplications/jobapplication-detail/jobapplication-detail.component';
+import { FileUploadComponent } from '../features/jobapplications/file-upload/file-upload.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -25,8 +27,8 @@ const routes: Routes = [
   { path: 'candidates', component: CandidateOverviewComponent, canActivate: [AuthGuard] },
   { path: 'candidates/new', component: CandidateNewComponent, canActivate: [AuthGuard] },
   { path: 'candidates/:id', component: CandidateDetailComponent, canActivate: [AuthGuard] },
-  { path: 'jobapplications', component: JobapplicationOverviewComponent, canActivate: [AuthGuard]},
-  { path: 'jobapplications/:id', component: JobapplicationDetailComponent, canActivate: [AuthGuard]},
+  { path: 'jobapplications', component: JobapplicationOverviewComponent, canActivate: [AuthGuard] },
+  { path: 'jobapplications/:id', component: JobapplicationDetailComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard] },
 ]
 

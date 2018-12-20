@@ -1,0 +1,22 @@
+<h1>File Upload Using Angular 5 and ASP.NET Core 2.1</h1>
+
+<form [formGroup]="newUploadForm" (ngSubmit)="uploadv2(data.value, formdata.files)">
+  <table id="mytable" class="table table-bordred table-striped">
+    <tr>
+      <th><label for="">data: </label></th>
+      <td><input #data type="text" id="data" name="data"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input #formdata type="file" name="formdata" multiple />
+      </td>
+    </tr>
+    <tr>
+        <td colspan="2" class="text-center">
+          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="reset" class="btn btn-default pull-right"><a routerLink="/jobapplications">Cancel</a></button>
+        </td>
+      </tr>
+</table>
+</form>

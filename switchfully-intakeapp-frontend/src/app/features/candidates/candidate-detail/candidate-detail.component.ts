@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Observable, forkJoin } from 'rxjs';
+import { HttpClient, HttpRequest, HttpEventType } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { CandidateService } from 'src/app/core/candidates/candidate.service';
@@ -26,10 +26,11 @@ export class CandidateDetailComponent implements OnInit {
 
   campaigns: Campaign[];
 
-  newJobApplicationForm= new FormGroup({
-    campaignId: new FormControl('',[
-      Validators.required]) ,
-    candidateId: new FormControl('')
+  newJobApplicationForm = new FormGroup({
+    campaignId: new FormControl('',[Validators.required]) ,
+    candidateId: new FormControl(''),
+    cv: new FormControl(null),
+    motivation: new FormControl(null)
   })
 
   constructor(
@@ -38,8 +39,8 @@ export class CandidateDetailComponent implements OnInit {
     private campaignservice: CampaignService,
     private route: ActivatedRoute,
     private location: Location,
-    private router: Router
-
+    private router: Router,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -47,23 +48,51 @@ export class CandidateDetailComponent implements OnInit {
     this.getAllCampaigns();
   }
 
-  getCandidate(): void{
+  getCandidate(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.candidate$ = this.candidateService.getById(id);   
+    this.candidate$ = this.candidateService.getById(id);
     this.candidateId = id;
   }
 
-  getAllCampaigns(){
+  getAllCampaigns() {
     this.campaignservice.getCampaigns()
       .subscribe(campaigns => this.campaigns = campaigns)
   }
 
-  createJobApplication(jobapplication: JobApplicationCreate): void {
-    console.log(this.newJobApplicationForm.value);
-    console.log(jobapplication);
-    console.log('campaignId: ' + jobapplication.campaignId);
-    console.log('candidateId: ' + jobapplication.candidateId);
+  create(jobapplicationcreate: JobApplicationCreate, cv, motivation) {
+    // forkJoin(this.upload(cv), this.upload(motivation))
+    this.getDataFromTwoResources(cv, motivation)
+      .subscribe(result => {
+        const jobAppToCreate = {
+          'campaignId': jobapplicationcreate.campaignId,
+          'candidateId': jobapplicationcreate.candidateId,
+          'cvId': result[0],
+          'motivationId': result[1]
+        };
+        console.log(`We're in`);
+        console.log(result);
+        this.jobapplicationservice.createJobApplication(jobAppToCreate)
+          .subscribe(result => this.router.navigate([`/jobapplications/${result.id}`]));
+      });
+  }
 
+  getDataFromTwoResources(cv, motivation): Observable<any[]> {
+    let url1 = this.upload(cv);
+    let url2 = this.upload(motivation);
+    return forkJoin([url1, url2]);
+  }
+
+  upload(files): Observable<any> {
+    const formData = new FormData();
+
+    for (let file of files) {
+      formData.append(file.name, file);
+    }
+
+    return this.http.post('http://localhost:59089/api/Files', formData, { responseType: 'text' });
+  }
+
+  createJobApplication(jobapplication: JobApplicationCreate): void {
     this.jobapplicationservice.createJobApplication(jobapplication)
       .subscribe( jobapp => this.router.navigate([`/jobapplications/${jobapp.id}`]));
   }

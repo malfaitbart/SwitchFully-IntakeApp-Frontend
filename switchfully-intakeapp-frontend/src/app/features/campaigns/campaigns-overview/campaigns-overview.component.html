@@ -20,9 +20,11 @@
       <td>{{campaign.startDate | date: date}}</td>
       <td>{{campaign.endDate | date : date}}</td>
 
-      <ng-template *ngIf="campaign.status else True">
-        <td><span class="badge badge-danger">Not Active</span></td>
-      </ng-template>
+      <ng-container *ngIf="campaign.status; then True; else False">
+      </ng-container>
+      <ng-template #False>
+          <td><span class="badge badge-danger">Not Active</span></td>
+        </ng-template>
       <ng-template #True>
         <td><span class="badge badge-success">Active</span></td>
       </ng-template>

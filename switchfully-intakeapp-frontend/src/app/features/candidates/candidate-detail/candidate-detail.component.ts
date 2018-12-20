@@ -72,7 +72,7 @@ export class CandidateDetailComponent implements OnInit {
         console.log(`We're in`);
         console.log(result);
         this.jobapplicationservice.createJobApplication(jobAppToCreate)
-          .subscribe(result => console.log(result));
+          .subscribe(result => this.router.navigate([`/jobapplications/${result.id}`]));
       });
   }
 

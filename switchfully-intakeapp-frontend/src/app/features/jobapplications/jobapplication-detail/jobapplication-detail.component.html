@@ -1,54 +1,96 @@
-<h2>Job Application Detail</h2>
-
 <div class="table-responsive " *ngIf="(jobapplication$ | async) as jobapplication else loading">
-  <table id="mytable" class="table table-bordred table-striped detailPageTable border">
-    <tr>
-      <th>Campagne: </th>
-      <td>{{jobapplication.campaign.name}}</td>
-    </tr>
-    <tr>
-      <th>Candidate: </th>
-      <td>{{jobapplication.candidate.firstName}} {{jobapplication.candidate.lastName}}</td>
-    </tr>
-    <tr>
-      <th>Email:</th>
-      <td>{{jobapplication.candidate.email}}</td>
-    </tr>
-    <tr>
-      <th>Phone:</th>
-      <td>{{jobapplication.candidate.phone}}</td>
-    </tr>
-    <tr>
-      <th>Status:</th>
-      <td>{{jobapplication.status.description}}</td>
-    </tr>
-    <tr>
-      <th>CV:</th>
-      <td>
-        <a href="http://localhost:59089/api/Files/{{jobapplication.cv.id}}" (click)="getDocument($event, jobapplication.cv.fileName)">{{jobapplication.cv.fileName}}</a>
-      </td>
-    </tr>
-    <tr>
-      <th>Motivation:</th>
-      <td>
-        <a href="http://localhost:59089/api/Files/{{jobapplication.motivation.id}}" (click)="getDocument($event, jobapplication.motivation.fileName)">{{jobapplication.motivation.fileName}}</a>
-      </td>
-    </tr>
-  </table>
-  <button (click)="showDialog = !showDialog;" class="float-right btn btn-danger btn-xs">reject!</button>
-  
+  <h2>Job Application Detail <small class="sub-title badge badge-dark">{{jobapplication.id}}</small></h2>
+  <hr>
+  <section name="candidate-campaign-readonly">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <section class="candidate-readonly">
+          <header>
+            <a href="#" title="View">
+              <span class="fas fa-eye float-right"></span>
+            </a>
+            <h3>{{jobapplication.candidate.firstName}} {{jobapplication.candidate.lastName}}</h3>
+            <hr>
+          </header>
+          <main>
+            <div>
+              <span class="label-title">Candidate Id: </span>
+              <span class="badge badge-secondary">
+                  {{jobapplication.candidate.id}}
+              </span>
+            </div>
+            <div>
+              <span class="label-title">
+                E-mail:
+              </span>
+              {{jobapplication.candidate.email}}
+            </div>
+            <div>
+              <span class="label-title">
+                Phone:
+              </span>
+              {{jobapplication.candidate.phone}}
+            </div>
+            <div>
+              <span class="label-title">
+                CV:
+              </span>
+              <a href="http://localhost:59089/api/Files/{{jobapplication.cv.id}}" (click)="getDocument($event, jobapplication.cv.fileName)">{{jobapplication.cv.fileName}} <span class="fas fa-file-download"></span></a>
+            </div>
+            <div>
+                <span class="label-title">
+                  Motivation:
+                </span>
+                <a href="http://localhost:59089/api/Files/{{jobapplication.motivation.id}}" (click)="getDocument($event, jobapplication.motivation.fileName)">{{jobapplication.motivation.fileName}} <span class="fas fa-file-download"></span></a>
+              </div>
+            </main>
+        </section>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <section class="campaign-readonly">
+          <header>
+            <a href="#" title="View">
+              <span class="fas fa-eye float-right"></span>
+            </a>
+            <h3>{{jobapplication.campaign.name}}</h3>
+            <hr>
+          </header>
+          <main>
+            <div>
+              <span class="label-title">Campaign Id: </span>
+              <span class="badge badge-secondary">
+                  {{jobapplication.campaign.campaignId}}
+              </span>
+            </div>
+          </main>
+        </section>
+      </div>
+    </div>
+  </section>
+  <section name="application-control-section" class="application-control-section">
+    <span class="float-left">
+      <button type="button" class="btn btn-success btn-md">
+        <span class="fas fa-check"></span>Phone screening
+      </button>
+    </span>
+    <span class="float-right">
+      <button (click)="showDialog = !showDialog;" class="float-right btn btn-danger btn-md">Reject job application</button>
+    </span>
+  </section>
+
   <app-reject-popup [visible]="showDialog"></app-reject-popup>
-  
+
   <section name="selection-procedure-steps">
     <app-screening></app-screening>
   </section>
 
- <div class="text-center backBtn">
+  <div class="text-center backBtn">
    <button class="btn btn-success" (click)="goBack()">go back</button>
-</div> 
+  </div>
 
 </div>
 
 <ng-template #loading>
-  Loading...
+    <h2>Job Application Detail</h2>
+    Loading...
 </ng-template>

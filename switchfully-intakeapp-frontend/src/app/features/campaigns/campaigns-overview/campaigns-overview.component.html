@@ -2,33 +2,30 @@
   <h2>Campaigns</h2>
   <button class=" btn createNewBtn" routerLink="/campaignnew">New Campaign</button>
 </div>
-
-<div class="table-responsive  col-12">
+<hr>
+<div>
   <table id="mytable" class="table table-bordred table-striped border">
-    <thead>
+    <thead class="thead-green">
+      <th>Id</th>
       <th>Name</th>
       <th>Client</th>
       <th>StartDate</th>
       <th>EndDate</th>
       <th>Status</th>
-      <th></th>
     </thead>
     <tr *ngFor="let campaign of campaigns$ | async ">
+      <th><a routerLink="/campaigndetail/{{campaign.campaignId}}">{{campaign.campaignId}}</a></th>
       <td>{{campaign.name}}</td>
       <td>{{campaign.client}}</td>
       <td>{{campaign.startDate | date: date}}</td>
       <td>{{campaign.endDate | date : date}}</td>
 
       <ng-template *ngIf="campaign.status else True">
-        <td>Not Active</td>
+        <td><span class="badge badge-danger">Not Active</span></td>
       </ng-template>
       <ng-template #True>
-        <td>Active</td>
+        <td><span class="badge badge-success">Active</span></td>
       </ng-template>
-      <td class="DetailBtnTdWidth">
-        <button class="btn btn-success" routerLink="/campaigndetail/{{campaign.campaignId}}">Details</button>
-      </td>
-
     </tr>
 
   </table>

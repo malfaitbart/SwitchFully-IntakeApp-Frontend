@@ -6,7 +6,6 @@
 <div>
   <table id="mytable" class="table table-bordred table-striped border">
     <thead class="thead-green">
-      <th>Id</th>
       <th>Name</th>
       <th>Client</th>
       <th>StartDate</th>
@@ -14,20 +13,19 @@
       <th>Status</th>
     </thead>
     <tr *ngFor="let campaign of campaigns$ | async ">
-      <th><a routerLink="/campaigndetail/{{campaign.campaignId}}">{{campaign.campaignId}}</a></th>
-      <td>{{campaign.name}}</td>
+      <th><a routerLink="/campaigndetail/{{campaign.campaignId}}">{{campaign.name}}</a></th>
       <td>{{campaign.client}}</td>
       <td>{{campaign.startDate | date: date}}</td>
       <td>{{campaign.endDate | date : date}}</td>
 
-      <ng-container *ngIf="campaign.status; then True; else False">
-      </ng-container>
-      <ng-template #False>
-          <td><span class="badge badge-danger">Not Active</span></td>
-        </ng-template>
-      <ng-template #True>
-        <td><span class="badge badge-success">Active</span></td>
-      </ng-template>
+      <td>
+        <span class="badge" [ngClass]="{
+            'badge-success':campaign.status == true,
+            'badge-danger':campaign.status == false
+          }">
+          {{convertToStatusLabel(campaign.status)}}
+        </span>
+      </td>
     </tr>
 
   </table>

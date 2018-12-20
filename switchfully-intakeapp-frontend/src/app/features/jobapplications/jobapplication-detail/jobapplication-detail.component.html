@@ -3,10 +3,10 @@
   <hr>
   <section name="candidate-campaign-readonly">
     <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="div-left col-lg-6 col-md-6 col-sm-12">
         <section class="candidate-readonly">
           <header>
-            <a href="#" title="View">
+            <a routerLink="/candidates/{{jobapplication.candidate.id}}" title="View">
               <span class="fas fa-eye float-right"></span>
             </a>
             <h3>{{jobapplication.candidate.firstName}} {{jobapplication.candidate.lastName}}</h3>
@@ -16,7 +16,7 @@
             <div>
               <span class="label-title">Candidate Id: </span>
               <span class="badge badge-secondary">
-                  {{jobapplication.candidate.id}}
+                {{jobapplication.candidate.id}}
               </span>
             </div>
             <div>
@@ -31,25 +31,13 @@
               </span>
               {{jobapplication.candidate.phone}}
             </div>
-            <div>
-              <span class="label-title">
-                CV:
-              </span>
-              <a href="http://localhost:59089/api/Files/{{jobapplication.cv.id}}" (click)="getDocument($event, jobapplication.cv.fileName)">{{jobapplication.cv.fileName}} <span class="fas fa-file-download"></span></a>
-            </div>
-            <div>
-                <span class="label-title">
-                  Motivation:
-                </span>
-                <a href="http://localhost:59089/api/Files/{{jobapplication.motivation.id}}" (click)="getDocument($event, jobapplication.motivation.fileName)">{{jobapplication.motivation.fileName}} <span class="fas fa-file-download"></span></a>
-              </div>
-            </main>
+          </main>
         </section>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="div-right col-lg-6 col-md-6 col-sm-12">
         <section class="campaign-readonly">
           <header>
-            <a href="#" title="View">
+            <a routerLink="/campaigndetail/{{jobapplication.campaign.campaignId}}" title="View">
               <span class="fas fa-eye float-right"></span>
             </a>
             <h3>{{jobapplication.campaign.name}}</h3>
@@ -59,18 +47,42 @@
             <div>
               <span class="label-title">Campaign Id: </span>
               <span class="badge badge-secondary">
-                  {{jobapplication.campaign.campaignId}}
+                {{jobapplication.campaign.campaignId}}
               </span>
             </div>
           </main>
         </section>
+        <hr>
+        <section class="campaign-readonly">
+            <header>
+              <h3>Documents</h3>
+              <hr>
+            </header>
+            <main>
+              <div>
+                <span class="label-title">
+                  CV:
+                </span>
+                <a href="http://localhost:59089/api/Files/{{jobapplication.cv.id}}" (click)="getDocument($event, jobapplication.cv.fileName)">{{jobapplication.cv.fileName}}
+                  <span class="fas fa-file-download"></span></a>
+              </div>
+              <div>
+                <span class="label-title">
+                  Motivation:
+                </span>
+                <a href="http://localhost:59089/api/Files/{{jobapplication.motivation.id}}" (click)="getDocument($event, jobapplication.motivation.fileName)">{{jobapplication.motivation.fileName}}
+                  <span class="fas fa-file-download"></span></a>
+              </div>
+            </main>
+          </section>
       </div>
     </div>
   </section>
+  <hr>
   <section name="application-control-section" class="application-control-section">
     <span class="float-left">
       <button type="button" class="btn btn-success btn-md">
-        <span class="fas fa-check"></span>Phone screening
+        <span class="fas fa-check"></span> {{jobapplication.selectionStep}}
       </button>
     </span>
     <span class="float-right">
@@ -85,12 +97,12 @@
   </section>
 
   <div class="text-center backBtn">
-   <button class="btn btn-success" (click)="goBack()">go back</button>
+    <button class="btn btn-success" (click)="goBack()">go back</button>
   </div>
 
 </div>
 
 <ng-template #loading>
-    <h2>Job Application Detail</h2>
-    Loading...
+  <h2>Job Application Detail</h2>
+  Loading...
 </ng-template>

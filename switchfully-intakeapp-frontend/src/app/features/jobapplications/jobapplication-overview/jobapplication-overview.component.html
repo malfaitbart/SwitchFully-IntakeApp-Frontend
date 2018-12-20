@@ -5,20 +5,19 @@
 <div>
   <table id="mytable" class="table table-bordred table-striped border">
     <thead class="thead-green">
-      <th>Id</th>
       <th>Candidate name</th>
       <th>Campaign name</th>
       <th>Status</th>
       <th>Selection step</th>
     </thead>
     <tr *ngFor="let jobapplicationoverview of jobapplications">
-      <th><a routerLink="/jobapplications/{{jobapplicationoverview.id}}">{{jobapplicationoverview.id}}</a></th>
-      <td>{{jobapplicationoverview.candidate}}</td>
+      <th><a routerLink="/jobapplications/{{jobapplicationoverview.id}}">{{jobapplicationoverview.candidate}}</a></th>
       <td>{{jobapplicationoverview.campaign}}</td>
       <td>
-        <span [ngClass]="{
-          'badge badge-success':jobapplicationoverview.status === 'Active',
-          'badge badge-danger':jobapplicationoverview.status === 'Rejected'
+        <span class="badge" [ngClass]="{
+          'badge-info':jobapplicationoverview.status === 'Active',
+          'badge-success':jobapplicationoverview.status === 'Accepted',
+          'badge-danger':jobapplicationoverview.status === 'Rejected'
         }">
           {{jobapplicationoverview.status}}
         </span>

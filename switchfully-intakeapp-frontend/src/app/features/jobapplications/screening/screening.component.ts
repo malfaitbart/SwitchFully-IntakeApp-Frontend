@@ -19,7 +19,7 @@ export class ScreeningComponent implements OnInit {
   lastScreening: Screening = new Screening();
 
   commentForm = new FormGroup({
-    comment: new FormControl()
+    comment: new FormControl('')
   });
 
   constructor(private screeningService: ScreeningService, private route: ActivatedRoute) { }
@@ -30,14 +30,17 @@ export class ScreeningComponent implements OnInit {
 
 
   getAllScreening(): void {
+    this.givenScreenings=[];
+    this.commentForm.reset();
     this.screeningService.getAllScreeningsings(this.selectedJopAppId).subscribe(screeningArray => {
       this.givenScreenings = screeningArray;
-      this.lastScreening = screeningArray[screeningArray.length - 1]
+      this.lastScreening = screeningArray.find(screening => screening.status === true )
     })
   }
   submitComment(input: NewScreening): void {
     this.screeningService.submitComment(this.selectedJopAppId, input)
-      .subscribe(() => window.location.reload());
+      //.subscribe( () => location.reload() )
+      .subscribe(() => this.getAllScreening());
   }
 
 

@@ -30,6 +30,7 @@ export class ScreeningComponent implements OnInit {
 
 
   getAllScreening(): void {
+    this.commentForm.reset();
     this.screeningService.getAllScreeningsings(this.selectedJopAppId).subscribe(screeningArray => {
       this.givenScreenings = screeningArray;
       this.lastScreening = screeningArray[screeningArray.length - 1]
